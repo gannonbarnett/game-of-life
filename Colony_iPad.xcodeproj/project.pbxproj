@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65B21FB0D8A700416B03 /* AppDelegate.swift */; };
+		164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65B41FB0D8A700416B03 /* MasterViewController.swift */; };
+		164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65B61FB0D8A700416B03 /* DetailViewController.swift */; };
+		164B65BA1FB0D8A700416B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 164B65B81FB0D8A700416B03 /* Main.storyboard */; };
+		164B65BC1FB0D8A700416B03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164B65BB1FB0D8A700416B03 /* Assets.xcassets */; };
+		164B65BF1FB0D8A700416B03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */; };
+		164B65CA1FB0D8A800416B03 /* Colony_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65C91FB0D8A800416B03 /* Colony_iPadTests.swift */; };
+		164B65D51FB0D8A800416B03 /* Colony_iPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65D41FB0D8A800416B03 /* Colony_iPadUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		164B65C61FB0D8A800416B03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164B65A71FB0D8A700416B03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 164B65AE1FB0D8A700416B03;
+			remoteInfo = Colony_iPad;
+		};
+		164B65D11FB0D8A800416B03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164B65A71FB0D8A700416B03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 164B65AE1FB0D8A700416B03;
+			remoteInfo = Colony_iPad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		164B65AF1FB0D8A700416B03 /* Colony_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colony_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		164B65B21FB0D8A700416B03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		164B65B41FB0D8A700416B03 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		164B65B61FB0D8A700416B03 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		164B65B91FB0D8A700416B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		164B65BB1FB0D8A700416B03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		164B65BE1FB0D8A700416B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		164B65C01FB0D8A700416B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		164B65C51FB0D8A800416B03 /* Colony_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Colony_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		164B65C91FB0D8A800416B03 /* Colony_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colony_iPadTests.swift; sourceTree = "<group>"; };
+		164B65CB1FB0D8A800416B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		164B65D01FB0D8A800416B03 /* Colony_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Colony_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		164B65D41FB0D8A800416B03 /* Colony_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colony_iPadUITests.swift; sourceTree = "<group>"; };
+		164B65D61FB0D8A800416B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		164B65AC1FB0D8A700416B03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		164B65C21FB0D8A800416B03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		164B65CD1FB0D8A800416B03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		164B65A61FB0D8A700416B03 = {
+			isa = PBXGroup;
+			children = (
+				164B65B11FB0D8A700416B03 /* Colony_iPad */,
+				164B65C81FB0D8A800416B03 /* Colony_iPadTests */,
+				164B65D31FB0D8A800416B03 /* Colony_iPadUITests */,
+				164B65B01FB0D8A700416B03 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		164B65B01FB0D8A700416B03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				164B65AF1FB0D8A700416B03 /* Colony_iPad.app */,
+				164B65C51FB0D8A800416B03 /* Colony_iPadTests.xctest */,
+				164B65D01FB0D8A800416B03 /* Colony_iPadUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		164B65B11FB0D8A700416B03 /* Colony_iPad */ = {
+			isa = PBXGroup;
+			children = (
+				164B65B21FB0D8A700416B03 /* AppDelegate.swift */,
+				164B65B41FB0D8A700416B03 /* MasterViewController.swift */,
+				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
+				164B65B81FB0D8A700416B03 /* Main.storyboard */,
+				164B65BB1FB0D8A700416B03 /* Assets.xcassets */,
+				164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */,
+				164B65C01FB0D8A700416B03 /* Info.plist */,
+			);
+			path = Colony_iPad;
+			sourceTree = "<group>";
+		};
+		164B65C81FB0D8A800416B03 /* Colony_iPadTests */ = {
+			isa = PBXGroup;
+			children = (
+				164B65C91FB0D8A800416B03 /* Colony_iPadTests.swift */,
+				164B65CB1FB0D8A800416B03 /* Info.plist */,
+			);
+			path = Colony_iPadTests;
+			sourceTree = "<group>";
+		};
+		164B65D31FB0D8A800416B03 /* Colony_iPadUITests */ = {
+			isa = PBXGroup;
+			children = (
+				164B65D41FB0D8A800416B03 /* Colony_iPadUITests.swift */,
+				164B65D61FB0D8A800416B03 /* Info.plist */,
+			);
+			path = Colony_iPadUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		164B65AE1FB0D8A700416B03 /* Colony_iPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 164B65D91FB0D8A800416B03 /* Build configuration list for PBXNativeTarget "Colony_iPad" */;
+			buildPhases = (
+				164B65AB1FB0D8A700416B03 /* Sources */,
+				164B65AC1FB0D8A700416B03 /* Frameworks */,
+				164B65AD1FB0D8A700416B03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Colony_iPad;
+			productName = Colony_iPad;
+			productReference = 164B65AF1FB0D8A700416B03 /* Colony_iPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		164B65C41FB0D8A800416B03 /* Colony_iPadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 164B65DC1FB0D8A800416B03 /* Build configuration list for PBXNativeTarget "Colony_iPadTests" */;
+			buildPhases = (
+				164B65C11FB0D8A800416B03 /* Sources */,
+				164B65C21FB0D8A800416B03 /* Frameworks */,
+				164B65C31FB0D8A800416B03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				164B65C71FB0D8A800416B03 /* PBXTargetDependency */,
+			);
+			name = Colony_iPadTests;
+			productName = Colony_iPadTests;
+			productReference = 164B65C51FB0D8A800416B03 /* Colony_iPadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		164B65CF1FB0D8A800416B03 /* Colony_iPadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 164B65DF1FB0D8A800416B03 /* Build configuration list for PBXNativeTarget "Colony_iPadUITests" */;
+			buildPhases = (
+				164B65CC1FB0D8A800416B03 /* Sources */,
+				164B65CD1FB0D8A800416B03 /* Frameworks */,
+				164B65CE1FB0D8A800416B03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				164B65D21FB0D8A800416B03 /* PBXTargetDependency */,
+			);
+			name = Colony_iPadUITests;
+			productName = Colony_iPadUITests;
+			productReference = 164B65D01FB0D8A800416B03 /* Colony_iPadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		164B65A71FB0D8A700416B03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Barnett;
+				TargetAttributes = {
+					164B65AE1FB0D8A700416B03 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L78B26PEZ6;
+						ProvisioningStyle = Automatic;
+					};
+					164B65C41FB0D8A800416B03 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L78B26PEZ6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 164B65AE1FB0D8A700416B03;
+					};
+					164B65CF1FB0D8A800416B03 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L78B26PEZ6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 164B65AE1FB0D8A700416B03;
+					};
+				};
+			};
+			buildConfigurationList = 164B65AA1FB0D8A700416B03 /* Build configuration list for PBXProject "Colony_iPad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 164B65A61FB0D8A700416B03;
+			productRefGroup = 164B65B01FB0D8A700416B03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				164B65AE1FB0D8A700416B03 /* Colony_iPad */,
+				164B65C41FB0D8A800416B03 /* Colony_iPadTests */,
+				164B65CF1FB0D8A800416B03 /* Colony_iPadUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		164B65AD1FB0D8A700416B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				164B65BF1FB0D8A700416B03 /* LaunchScreen.storyboard in Resources */,
+				164B65BC1FB0D8A700416B03 /* Assets.xcassets in Resources */,
+				164B65BA1FB0D8A700416B03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		164B65C31FB0D8A800416B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		164B65CE1FB0D8A800416B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		164B65AB1FB0D8A700416B03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */,
+				164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */,
+				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		164B65C11FB0D8A800416B03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				164B65CA1FB0D8A800416B03 /* Colony_iPadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		164B65CC1FB0D8A800416B03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				164B65D51FB0D8A800416B03 /* Colony_iPadUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		164B65C71FB0D8A800416B03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 164B65AE1FB0D8A700416B03 /* Colony_iPad */;
+			targetProxy = 164B65C61FB0D8A800416B03 /* PBXContainerItemProxy */;
+		};
+		164B65D21FB0D8A800416B03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 164B65AE1FB0D8A700416B03 /* Colony_iPad */;
+			targetProxy = 164B65D11FB0D8A800416B03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		164B65B81FB0D8A700416B03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				164B65B91FB0D8A700416B03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				164B65BE1FB0D8A700416B03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		164B65D71FB0D8A800416B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		164B65D81FB0D8A800416B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		164B65DA1FB0D8A800416B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L78B26PEZ6;
+				INFOPLIST_FILE = Colony_iPad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPad";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		164B65DB1FB0D8A800416B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L78B26PEZ6;
+				INFOPLIST_FILE = Colony_iPad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPad";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		164B65DD1FB0D8A800416B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L78B26PEZ6;
+				INFOPLIST_FILE = Colony_iPadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPadTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Colony_iPad.app/Colony_iPad";
+			};
+			name = Debug;
+		};
+		164B65DE1FB0D8A800416B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L78B26PEZ6;
+				INFOPLIST_FILE = Colony_iPadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPadTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Colony_iPad.app/Colony_iPad";
+			};
+			name = Release;
+		};
+		164B65E01FB0D8A800416B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = L78B26PEZ6;
+				INFOPLIST_FILE = Colony_iPadUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPadUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Colony_iPad;
+			};
+			name = Debug;
+		};
+		164B65E11FB0D8A800416B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = L78B26PEZ6;
+				INFOPLIST_FILE = Colony_iPadUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPadUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Colony_iPad;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		164B65AA1FB0D8A700416B03 /* Build configuration list for PBXProject "Colony_iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				164B65D71FB0D8A800416B03 /* Debug */,
+				164B65D81FB0D8A800416B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		164B65D91FB0D8A800416B03 /* Build configuration list for PBXNativeTarget "Colony_iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				164B65DA1FB0D8A800416B03 /* Debug */,
+				164B65DB1FB0D8A800416B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		164B65DC1FB0D8A800416B03 /* Build configuration list for PBXNativeTarget "Colony_iPadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				164B65DD1FB0D8A800416B03 /* Debug */,
+				164B65DE1FB0D8A800416B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		164B65DF1FB0D8A800416B03 /* Build configuration list for PBXNativeTarget "Colony_iPadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				164B65E01FB0D8A800416B03 /* Debug */,
+				164B65E11FB0D8A800416B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 164B65A71FB0D8A700416B03 /* Project object */;
+}
