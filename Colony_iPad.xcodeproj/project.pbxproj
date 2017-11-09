@@ -18,6 +18,7 @@
 		164B65E51FB0DC2E00416B03 /* cellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E41FB0DC2E00416B03 /* cellView.swift */; };
 		164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E61FB0DD3000416B03 /* coordinate.swift */; };
 		164B65E91FB0DD3900416B03 /* Colony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E81FB0DD3900416B03 /* Colony.swift */; };
+		164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65EC1FB3EF6B00416B03 /* ColonyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		164B65E41FB0DC2E00416B03 /* cellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellView.swift; sourceTree = "<group>"; };
 		164B65E61FB0DD3000416B03 /* coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coordinate.swift; sourceTree = "<group>"; };
 		164B65E81FB0DD3900416B03 /* Colony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colony.swift; sourceTree = "<group>"; };
+		164B65EC1FB3EF6B00416B03 /* ColonyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColonyView.swift; path = ../ColonyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				164B65B21FB0D8A700416B03 /* AppDelegate.swift */,
 				164B65B41FB0D8A700416B03 /* MasterViewController.swift */,
 				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
+				164B65EC1FB3EF6B00416B03 /* ColonyView.swift */,
 				164B65B81FB0D8A700416B03 /* Main.storyboard */,
 				164B65E61FB0DD3000416B03 /* coordinate.swift */,
 				164B65E81FB0DD3900416B03 /* Colony.swift */,
@@ -278,6 +281,7 @@
 				164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */,
 				164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */,
 				164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */,
+				164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */,
 				164B65E91FB0DD3900416B03 /* Colony.swift in Sources */,
 				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,
 			);

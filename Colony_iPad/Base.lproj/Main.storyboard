@@ -44,8 +44,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab9-PP-Ijf">
-                                <rect key="frame" x="0.0" y="65" width="703" height="703"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab9-PP-Ijf" customClass="ColonyView" customModule="Colony_iPad" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -60,7 +60,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Colony" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="Background_VIEW" destination="Ab9-PP-Ijf" id="ajE-Zh-Iiq"/>
+                        <outlet property="colony_DetailView" destination="Ab9-PP-Ijf" id="USa-Vx-QsT"/>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                     </connections>
                 </viewController>

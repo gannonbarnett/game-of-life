@@ -32,24 +32,16 @@ class DetailViewController: UIViewController {
         
     }
 
-    @IBOutlet var Background_VIEW: UIView!
+    @IBOutlet var colony_DetailView: ColonyView!
     
     override func viewDidLoad() {
-        if colony == nil {
+       if colony == nil {
             colony = Colony(60)
         }
         super.viewDidLoad()
-        Background_VIEW.backgroundColor = UIColor.lightGray
-        //COLONY VIEW SETUP
-        let colony_INSET : CGFloat = 5
-        let colonyFrame = CGRect(x: colony_INSET, y: colony_INSET, width: Background_VIEW.frame.width - 2 * colony_INSET, height: Background_VIEW.frame.height - 2 * colony_INSET)
-        let colonyView = UIView(frame: colonyFrame)
-        Background_VIEW.backgroundColor = UIColor.lightGray
-        
-        Background_VIEW.addSubview(colonyView)
-        //CELL SET UP
-        //note:: already implemented to possibly change size of colony if needed. 
-        //vary gap, cellsWide to vary size of colony and display.
+
+
+        /***
         let gap_WIDTH : CGFloat = 2
         let cellsWide = colony!.cellsWide
 
@@ -77,6 +69,7 @@ class DetailViewController: UIViewController {
             }
             
         }
+        **/
         self.configureView()
     }
 
@@ -146,6 +139,7 @@ class DetailViewController: UIViewController {
         evolveColony(timed: true)
         
     }
-
+    
+    
 }
 
