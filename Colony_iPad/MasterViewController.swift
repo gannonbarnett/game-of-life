@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var colonies = [Colony]()
+    var colonies = [ColonyView]()
 
     var ColonyID = 0
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(_ sender: Any) {
-        colonies.insert(Colony(60), at: 0)
+        colonies.insert(ColonyView(), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -49,9 +49,10 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let colony = colonies[indexPath.row]
+                print(colonies.count)
+                let colonyViewObject = colonies[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.colony = colony
+                controller.colony = colonyViewObject.colony
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -71,8 +72,8 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let colony = colonies[indexPath.row]
-        cell.textLabel!.text = "Colony \(ColonyID)"
+        let colonyViewObject = colonies[indexPath.row]
+        cell.textLabel!.text = "Colony \(colonyViewObject.getID())"
         ColonyID += 1
         return cell
     }

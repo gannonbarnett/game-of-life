@@ -37,12 +37,12 @@ class Colony : CustomStringConvertible{
         print("Y (\(windowMIN.yCoor), \(windowMAX.yCoor)")
     }
     
-    func setCellAlive(_ coor : Coordinate) {
-        aliveCells.insert(coor)
+    func setCellAlive(_ cell : Coordinate) {
+        aliveCells.insert(cell)
     }
     
-    func setCellDead(xCoor: Int, yCoor: Int) {
-        let cell = Coordinate(xCoor: xCoor, yCoor: yCoor)
+    func setCellDead(_ cell : Coordinate) {
+
         if aliveCells.contains(cell) {
             aliveCells.remove(cell)
         }
