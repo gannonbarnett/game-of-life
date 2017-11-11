@@ -16,11 +16,7 @@ struct Line {
 
 
 class ColonyView: UIView {
-    public static var ID : Int = 0 {
-        didSet {
-            ID = ID + 1
-        }
-    }
+    
     public var colony : Colony = Colony(10)
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
@@ -31,10 +27,6 @@ class ColonyView: UIView {
     
     private var cellWidth : CGFloat {
         return (frame.width - (2 * INSET)) / CGFloat(cellsInView)
-    }
-    
-    public func getID() -> String {
-        return String(ColonyView.ID)
     }
     
     private func drawLine(_ line : Line) {
@@ -100,7 +92,6 @@ class ColonyView: UIView {
         
         colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
         setNeedsDisplay()
-        print(colony)
     }
     
     /*

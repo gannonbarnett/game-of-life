@@ -11,14 +11,13 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var colonies = [ColonyView]()
+    var colonies = [Colony]()
 
     var ColonyID = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
@@ -39,7 +38,8 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(_ sender: Any) {
-        colonies.insert(ColonyView(), at: 0)
+        let newColony = Colony()
+        colonies.insert(newColony, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -47,12 +47,16 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                print(colonies.count)
-                let colonyViewObject = colonies[indexPath.row]
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                let selectedColony = colonies[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.colony = colonyViewObject.colony
+                controller.colony = selectedColony
+                controller.colony_DetailView = detailViewController?.colony_DetailView
+                controller.configureView()
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -72,8 +76,8 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let colonyViewObject = colonies[indexPath.row]
-        cell.textLabel!.text = "Colony \(colonyViewObject.getID())"
+        let colony = colonies[indexPath.row]
+        cell.textLabel!.text = "Colony \(colony.ID)"
         ColonyID += 1
         return cell
     }
@@ -96,6 +100,7 @@ class MasterViewController: UITableViewController {
         
     }
     @IBAction func playTouched(_ sender: Any) {
+        
     }
 
     @IBAction func pauseTouched(_ sender: Any) {

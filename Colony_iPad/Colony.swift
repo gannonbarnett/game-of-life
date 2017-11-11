@@ -9,6 +9,8 @@
 import Foundation
 
 class Colony : CustomStringConvertible{
+    public static var IDcounter : Int = 0
+    public var ID : Int = 0
     private var generation : Int
     public var aliveCells = Set<Coordinate>()
     public var cellsWide : Int
@@ -18,6 +20,8 @@ class Colony : CustomStringConvertible{
     var isDead: Bool { return aliveCells.isEmpty }
     
     init(_ cellsWide: Int = 10) {
+        ID = Colony.IDcounter
+        Colony.IDcounter += 1
         generation = 0
         self.cellsWide = cellsWide
         windowMIN = Coordinate(xCoor: 0, yCoor: 0)
