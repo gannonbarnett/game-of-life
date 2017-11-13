@@ -211,7 +211,7 @@
 				TargetAttributes = {
 					164B65AE1FB0D8A700416B03 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = L78B26PEZ6;
+						DevelopmentTeam = GZXGT2NGT4;
 						ProvisioningStyle = Automatic;
 					};
 					164B65C41FB0D8A800416B03 = {
@@ -439,7 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = L78B26PEZ6;
+				DEVELOPMENT_TEAM = GZXGT2NGT4;
 				INFOPLIST_FILE = Colony_iPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPad";
@@ -452,7 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = L78B26PEZ6;
+				DEVELOPMENT_TEAM = GZXGT2NGT4;
 				INFOPLIST_FILE = Colony_iPad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Barnett.Colony-iPad";

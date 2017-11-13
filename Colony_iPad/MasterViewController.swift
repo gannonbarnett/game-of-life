@@ -82,7 +82,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let idetifier = tableView.cellForRow(at: indexPath)?.reuseIdentifier
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             let colony = colonies[indexPath.row]
             cell.textLabel!.text = "Colony \(colony.ID)"
