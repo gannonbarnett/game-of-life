@@ -78,7 +78,7 @@ class ColonyView: UIView {
         let cell = CGRect(x: CGx, y: CGy, width: cellWidth, height: cellWidth)
         
         let b = UIBezierPath(rect: cell)
-        UIColor.green.set()
+        UIColor.red.set()
         b.fill()
         b.stroke()
     }
