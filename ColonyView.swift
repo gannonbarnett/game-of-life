@@ -63,11 +63,11 @@ class ColonyView: UIView {
     }
 
     private func locationToCoor(_ location : CGPoint) -> Coordinate {
-        let x = location.x
-        let y = location.y
-        
-        let x_COOR = Int(Double(x / cellWidth).rounded(.down))
-        let y_COOR = Int(Double(y / cellWidth).rounded(.down))
+        let x = location.x - INSET
+        let y = location.y - INSET
+    
+        let x_COOR = Int((x / cellWidth))
+        let y_COOR = Int((y / cellWidth))
         return Coordinate(xCoor: x_COOR, yCoor: y_COOR)
     }
     
