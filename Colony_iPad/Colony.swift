@@ -19,7 +19,7 @@ class Colony : CustomStringConvertible{
     
     var isDead: Bool { return aliveCells.isEmpty }
     
-    init(_ cellsWide: Int = 10) {
+    init(_ cellsWide: Int = 60) {
         ID = Colony.IDcounter
         Colony.IDcounter += 1
         generation = 0

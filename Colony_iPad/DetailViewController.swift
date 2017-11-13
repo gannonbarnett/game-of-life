@@ -14,7 +14,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var colony_DetailView: ColonyView!
     
     func configureView() {
-        // Update the user interface for the detail item.
         colony_DetailView.setNeedsDisplay()
     }
 

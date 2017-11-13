@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreGraphics
+import Foundation
 
 struct Line {
     var begin = CGPoint.zero
@@ -65,11 +66,10 @@ class ColonyView: UIView {
         let x = location.x
         let y = location.y
         
-        let x_COOR = Int(x / cellWidth)
-        let y_COOR = Int(y / cellWidth)
+        let x_COOR = Int(Double(x / cellWidth).rounded(.down))
+        let y_COOR = Int(Double(y / cellWidth).rounded(.down))
         return Coordinate(xCoor: x_COOR, yCoor: y_COOR)
     }
-    
     
     private func colorCellAlive(_ coor : Coordinate) {
         
@@ -81,7 +81,6 @@ class ColonyView: UIView {
         UIColor.green.set()
         b.fill()
         b.stroke()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -93,13 +92,4 @@ class ColonyView: UIView {
         colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
         setNeedsDisplay()
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }
