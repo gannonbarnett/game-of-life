@@ -30,7 +30,7 @@ class ColonyView: UIView {
     }
     
     private func drawLine(_ line : Line) {
-        UIColor.black.setStroke()
+        UIColor.darkGray.setStroke()
         let path = UIBezierPath()
         path.lineWidth = line_WIDTH
         path.lineCapStyle = .round
@@ -58,12 +58,12 @@ class ColonyView: UIView {
             let end = CGPoint(x: w - INSET, y: CGFloat(y) * cellWidth + INSET)
             drawLine(Line(begin: start, end: end))
         }
-        
     }
 
     private func locationToCoor(_ location : CGPoint) -> Coordinate {
         let x = location.x
         let y = location.y
+        //needs to be changed to always round down. 
         
         let x_COOR = Int(x / cellWidth)
         let y_COOR = Int(y / cellWidth)
@@ -93,13 +93,6 @@ class ColonyView: UIView {
         colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
         setNeedsDisplay()
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+
 
 }
