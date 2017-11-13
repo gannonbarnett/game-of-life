@@ -12,10 +12,11 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var colonies = [Colony]()
-
+    
     var ColonyID = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        colonies.append(Colony())
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -65,25 +66,33 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
 
+    //Control Cell 
+    
+    @IBAction func evolveOnceTouched(_ sender: Any) {
+        detailViewController?.evolveColony()
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
+      //  return 2
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      //  return section == 1 ? colonies.count : 1
         return colonies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        let colony = colonies[indexPath.row]
-        cell.textLabel!.text = "Colony \(colony.ID)"
-        ColonyID += 1
-        return cell
+        let idetifier = tableView.cellForRow(at: indexPath)?.reuseIdentifier
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            let colony = colonies[indexPath.row]
+            cell.textLabel!.text = "Colony \(colony.ID)"
+         //   ColonyID += 1 //THIS IS IN WRONG PLACE
+            return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+       // guard indexPath.section == 1 else {return false}
         return true
     }
 
@@ -95,7 +104,7 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
+    
     @IBAction func speedSliderMoved(_ sender: Any) {
         
     }
@@ -106,10 +115,6 @@ class MasterViewController: UITableViewController {
     @IBAction func pauseTouched(_ sender: Any) {
     }
 
-    @IBAction func evolveOnceTouched(_ sender: Any) {
-        detailViewController?.evolveColony()
-    }
-    
     @IBAction func resetTouched(_ sender: Any) {
     }
     

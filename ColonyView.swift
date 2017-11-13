@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreGraphics
+import Foundation
 
 struct Line {
     var begin = CGPoint.zero
@@ -65,11 +66,10 @@ class ColonyView: UIView {
         let y = location.y
         //needs to be changed to always round down. 
         
-        let x_COOR = Int(x / cellWidth)
-        let y_COOR = Int(y / cellWidth)
+        let x_COOR = Int(Double(x / cellWidth).rounded(.down))
+        let y_COOR = Int(Double(y / cellWidth).rounded(.down))
         return Coordinate(xCoor: x_COOR, yCoor: y_COOR)
     }
-    
     
     private func colorCellAlive(_ coor : Coordinate) {
         
@@ -81,7 +81,6 @@ class ColonyView: UIView {
         UIColor.green.set()
         b.fill()
         b.stroke()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

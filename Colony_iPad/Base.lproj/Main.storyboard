@@ -147,8 +147,26 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ControlCell" selectionStyle="default" indentationWidth="10" rowHeight="250" id="LuN-z6-bY9" customClass="ControlCell" customModule="Colony_iPad" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="320" height="250"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LuN-z6-bY9" id="A5s-Yq-A1K">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-td-Z6q">
+                                            <rect key="frame" x="29" y="35" width="83" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Evolve once"/>
+                                            <connections>
+                                                <action selector="evolveOnceTouched:" destination="7bK-jq-Zjz" eventType="touchUpInside" id="qNO-KG-HJJ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="5OS-Er-4ZF" style="IBUITableViewCellStyleDefault" id="HQ1-EN-PgX">
-                                <rect key="frame" x="0.0" y="232" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="272" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQ1-EN-PgX" id="LMr-L8-7qL">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
