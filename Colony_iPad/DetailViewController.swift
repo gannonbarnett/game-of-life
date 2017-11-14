@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     }
 
 
-    var colony : Colony = Colony()
+    var colony : Colony = Colony(hasID: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,8 +17,8 @@ struct Line {
 
 
 class ColonyView: UIView {
-    
-    public var colony : Colony = Colony(10)
+
+    public var colony : Colony!
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
 
