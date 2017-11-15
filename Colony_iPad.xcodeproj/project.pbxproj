@@ -19,6 +19,7 @@
 		164B65E91FB0DD3900416B03 /* Colony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E81FB0DD3900416B03 /* Colony.swift */; };
 		164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65EC1FB3EF6B00416B03 /* ColonyView.swift */; };
 		16B3BF4A1FB7C71E00E6DC5D /* ControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3BF491FB7C71E00E6DC5D /* ControlCell.swift */; };
+		16B3BF4C1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3BF4B1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		164B65E81FB0DD3900416B03 /* Colony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colony.swift; sourceTree = "<group>"; };
 		164B65EC1FB3EF6B00416B03 /* ColonyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColonyView.swift; path = ../ColonyView.swift; sourceTree = "<group>"; };
 		16B3BF491FB7C71E00E6DC5D /* ControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlCell.swift; sourceTree = "<group>"; };
+		16B3BF4B1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColonyEvolveErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +111,9 @@
 			children = (
 				164B65B21FB0D8A700416B03 /* AppDelegate.swift */,
 				164B65B41FB0D8A700416B03 /* MasterViewController.swift */,
-				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
+				16B3BF4B1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift */,
 				164B65EC1FB3EF6B00416B03 /* ColonyView.swift */,
+				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
 				164B65B81FB0D8A700416B03 /* Main.storyboard */,
 				16B3BF491FB7C71E00E6DC5D /* ControlCell.swift */,
 				164B65E61FB0DD3000416B03 /* coordinate.swift */,
@@ -282,6 +285,7 @@
 				164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */,
 				164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */,
 				16B3BF4A1FB7C71E00E6DC5D /* ControlCell.swift in Sources */,
+				16B3BF4C1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift in Sources */,
 				164B65E91FB0DD3900416B03 /* Colony.swift in Sources */,
 				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,
 			);

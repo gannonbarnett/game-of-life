@@ -11,15 +11,15 @@ import Foundation
 class Colony : CustomStringConvertible{
     public static var IDcounter : Int = 0
     public var ID : Int? = nil
-    private var generation : Int
+    public var generation : Int
     public var aliveCells = Set<Coordinate>()
     public var cellsWide : Int
     private var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
     private var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
-    
+    public var wrapping : Bool = true
     var isDead: Bool { return aliveCells.isEmpty }
     
-    init(hasID : Bool = true, cellsWide: Int = 60) {
+    init(hasID : Bool = true, cellsWide: Int = 10) {
         if hasID {
             ID = Colony.IDcounter
             Colony.IDcounter += 1
@@ -80,15 +80,46 @@ class Colony : CustomStringConvertible{
         return aliveCells.contains(cell)
     }
     
-    func evolve() {
+    func evolve() throws {
         var relevantCells = [Coordinate : Int]()
         
         for aliveCell in aliveCells {
-            //I have window mode turned off for the app-- so that alive cells don't exist outside
-            //of the view area. Delete this line and the window will be just a window-- alive
-            //cells will exist outside of view.
             
-            let surroundingCells = aliveCell.getSurroundingCells().filter({$0.isWithinCoordinates(c1: windowMIN, c2: windowMAX)})
+            var surroundingCells = aliveCell.getSurroundingCells().filter({$0.isWithinCoordinates(c1: windowMIN, c2: windowMAX)})
+            
+            if wrapping {
+                if aliveCell.xCoor == 0 {
+                    var wrappedCells = Set<Coordinate>()
+                    wrappedCells.insert(Coordinate(xCoor: windowMAX.xCoor - 1, yCoor: aliveCell.yCoor + 1))
+                    wrappedCells.insert(Coordinate(xCoor: windowMAX.xCoor - 1, yCoor: aliveCell.yCoor))
+                    wrappedCells.insert(Coordinate(xCoor: windowMAX.xCoor - 1, yCoor: aliveCell.yCoor - 1))
+                    surroundingCells.insert(contentsOf: wrappedCells, at: 0)
+                }
+                
+                if aliveCell.yCoor == 0 {
+                    var wrappedCells = Set<Coordinate>()
+                    wrappedCells.insert(Coordinate(xCoor: aliveCell.xCoor + 1, yCoor: windowMAX.yCoor - 1))
+                    wrappedCells.insert(Coordinate(xCoor: aliveCell.xCoor, yCoor: windowMAX.yCoor - 1))
+                    wrappedCells.insert(Coordinate(xCoor: aliveCell.xCoor - 1, yCoor: windowMAX.yCoor - 1))
+                    surroundingCells.insert(contentsOf: wrappedCells, at: 0)
+                }
+                
+                if aliveCell.xCoor == windowMAX.xCoor - 1{
+                    var wrappedCells = Set<Coordinate>()
+                    wrappedCells.insert(Coordinate(xCoor: 0, yCoor: aliveCell.yCoor + 1))
+                    wrappedCells.insert(Coordinate(xCoor: 0, yCoor: aliveCell.yCoor))
+                    wrappedCells.insert(Coordinate(xCoor: 0, yCoor: aliveCell.yCoor - 1))
+                    surroundingCells.insert(contentsOf: wrappedCells, at: 0)
+                }
+                
+                if aliveCell.yCoor == windowMAX.yCoor - 1 {
+                    var wrappedCells = Set<Coordinate>()
+                    wrappedCells.insert(Coordinate(xCoor: aliveCell.xCoor + 1, yCoor: 0))
+                    wrappedCells.insert(Coordinate(xCoor: aliveCell.xCoor, yCoor: 0))
+                    wrappedCells.insert(Coordinate(xCoor: aliveCell.xCoor - 1, yCoor: 0))
+                    surroundingCells.insert(contentsOf: wrappedCells, at: 0)
+                }
+            }
             
             for cell in surroundingCells {
                 if relevantCells.keys.contains(cell)  {
@@ -107,6 +138,18 @@ class Colony : CustomStringConvertible{
             } else if number == 2 && aliveCells.contains(cell) {
                 nextGen.insert(cell)
             }
+        }
+
+        if nextGen.isEmpty {
+            aliveCells = nextGen
+            generation += 1
+            throw EvolveErrors.Colony_Dead
+        }
+        
+        if nextGen == aliveCells {
+            aliveCells = nextGen
+            generation += 1
+            throw EvolveErrors.Colony_Stagnant
         }
         
         aliveCells = nextGen
