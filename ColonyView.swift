@@ -5,7 +5,6 @@
 //  Created by Gannon Barnett on 11/8/17.
 //  Copyright © 2017 Barnett. All rights reserved.
 //
-
 import UIKit
 import CoreGraphics
 import Foundation
@@ -17,11 +16,12 @@ struct Line {
 
 
 class ColonyView: UIView {
-
-    public var colony : Colony!
+    
+    public var colony : Colony = Colony(hasID: true, cellsWide: 10)
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
-
+    
+    
     private var cellsInView : Int {
         return colony.cellsWide
     }
@@ -61,11 +61,11 @@ class ColonyView: UIView {
         }
         
     }
-
+    
     private func locationToCoor(_ location : CGPoint) -> Coordinate {
         let x = location.x - INSET
         let y = location.y - INSET
-    
+        
         let x_COOR = Int((x / cellWidth))
         let y_COOR = Int((y / cellWidth))
         return Coordinate(xCoor: x_COOR, yCoor: y_COOR)

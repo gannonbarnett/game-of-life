@@ -12,8 +12,10 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var colonies = [Colony]()
-    
-    var ColonyID = 0
+
+    func printTest() {
+        print("Got to master!")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,6 +40,8 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        
+        print("view just appeared.")
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +50,15 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(_ sender: Any) {
+        let NewColonyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewColonyPopUpID") as! NewColonyViewController
+        self.addChildViewController(NewColonyVC)
+        NewColonyVC.view.frame = self.view.frame
+        self.view.addSubview(NewColonyVC.view)
+        NewColonyVC.didMove(toParentViewController: self)
+        var colonyName = NewColonyVC.colonyName
+
+        colonyName = NewColonyVC.colonyName
+        print("\(colonyName)")
         let newColony = Colony()
         colonies.insert(newColony, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
@@ -61,11 +74,13 @@ class MasterViewController: UITableViewController {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.colony = selectedColony
                 controller.colony_DetailView = detailViewController?.colony_DetailView
+                controller.colony_DetailView.colony = selectedColony
                 controller.configureView()
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
+        
     }
 
     // MARK: - Table View
@@ -83,7 +98,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             let colony = colonies[indexPath.row]
-            cell.textLabel!.text = "Colony \(colony.ID!)"
+            cell.textLabel!.text = "Colony \(colony.ID!) \(colony.name)"
             return cell
     }
 

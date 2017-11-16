@@ -8,15 +8,23 @@
 
 import Foundation
 
+enum colonyTemplates {
+    case blank, glider, square
+}
+
 class Colony : CustomStringConvertible{
     public static var IDcounter : Int = 0
+    public var temp : colonyTemplates = .blank
     public var ID : Int? = nil
     public var generation : Int
     public var aliveCells = Set<Coordinate>()
     public var cellsWide : Int
     private var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
     private var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
-    public var wrapping : Bool = true
+    private var wrapping : Bool = true
+    public var name : String? = ""
+    
+    
     var isDead: Bool { return aliveCells.isEmpty }
     
     init(hasID : Bool = true, cellsWide: Int = 10) {
@@ -24,11 +32,28 @@ class Colony : CustomStringConvertible{
             ID = Colony.IDcounter
             Colony.IDcounter += 1
         }
+        
         generation = 0
         self.cellsWide = cellsWide
         windowMIN = Coordinate(xCoor: 0, yCoor: 0)
         windowMAX = Coordinate(xCoor: cellsWide, yCoor: cellsWide)
         aliveCells = Set<Coordinate>()
+        
+        switch temp {
+        case .glider:
+            setCellAlive(Coordinate(xCoor: 1, yCoor: 1))
+            setCellAlive(Coordinate(xCoor: 2, yCoor: 1))
+            setCellAlive(Coordinate(xCoor: 2, yCoor: 2))
+            
+        case .square:
+            setCellAlive(Coordinate(xCoor: 1, yCoor: 1))
+            setCellAlive(Coordinate(xCoor: 2, yCoor: 2))
+            setCellAlive(Coordinate(xCoor: 3, yCoor: 3))
+
+        case .blank:
+            return
+            
+        }
     }
     
     func setWindow(xMIN: Int, xMAX: Int, yMIN: Int, yMAX: Int) {
@@ -56,6 +81,14 @@ class Colony : CustomStringConvertible{
     
     func resetColony() {
         aliveCells.removeAll()
+    }
+    
+    func setWrappingTo(_ status: Bool) {
+        wrapping = status
+    }
+    
+    func isWrapping() -> Bool {
+        return wrapping
     }
     
     var description: String {

@@ -17,10 +17,13 @@ class DetailViewController: UIViewController {
     
     func configureView() {
         colony_DetailView.setNeedsDisplay()
-        GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
     }
 
 
+    
+
+    
+    
     var colony : Colony = Colony(hasID: false)
     
     override func viewDidLoad() {
@@ -28,6 +31,10 @@ class DetailViewController: UIViewController {
         colony_DetailView = self.stackView.subviews[0] as! ColonyView
         ControlsBar = self.stackView.subviews[1]
         colony_DetailView.colony = colony
+        GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
+        updateSpeedLabel()
+        updateWrappingLabel()
+        WrappingSwitch.setOn(colony_DetailView.colony.isWrapping(), animated: false)
         self.configureView()
     }
 
@@ -40,35 +47,67 @@ class DetailViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
+    //MARK:: CONTROLS BAR FUNCTIONS
     @IBAction func PlayButtonPressed(_ sender: Any) {
         evolveColony()
     }
     
     @IBAction func PauseButtonPressed(_ sender: Any) {
-        //safest way to stop timer. I found without setting timer
-        //to nil, the timer sometimes would not stop.
         if timer != nil {
             timer!.invalidate()
             timer = nil
         }
     }
     
-    @IBAction func EvolveSpeedChanged(_ sender: Any) {
-        
-    }
     
     @IBOutlet var EvolveSpeedLabel: UILabel!
     
     @IBOutlet var EvolveSpeedSlider: UISlider!
     
-    @IBOutlet var GenNumberLabel: UILabel!
-    
     var EvolveSpeedRawValue : Double {
         return Double(EvolveSpeedSlider.value)
     }
+    
+    @IBAction func EvolveSpeedChanged(_ sender: Any) {
+        updateSpeedLabel()
+    }
+
+    @IBOutlet var GenNumberLabel: UILabel!
+    
+    @IBOutlet var WrappingStatusLabel: UILabel!
+
+    @IBOutlet var WrappingSwitch: UISwitch!
+    
+    @IBAction func WrappingSwitchChanged(_ sender: Any) {
+        colony_DetailView.colony.setWrappingTo(WrappingStatusLabel.isEnabled)
+        updateWrappingLabel()
+    }
+
+    @IBAction func ClearButtonTouched(_ sender: Any) {
+        colony_DetailView.colony.resetColony()
+        configureView()
+    }
+    
+    func updateWrappingLabel() {
+        if colony_DetailView.colony.isWrapping() {
+            WrappingStatusLabel.text = "Wrapping Enabled"
+        }
+        WrappingStatusLabel.text = "Wrapping Disabled"
+    }
+    
+    func updateSpeedLabel() {
+        guard sliderRawtoTime() != nil else {
+            EvolveSpeedLabel.text = "single step"
+            return
+        }
+        
+        let speed : String = String(describing: sliderRawtoTime()!.binade)
+        EvolveSpeedLabel.text = "\(speed)s / gen"
+    }
+    
     
     //change this value to change max speed of evolve
     let interval_MIN = 0.2
@@ -84,16 +123,16 @@ class DetailViewController: UIViewController {
     func evolveColony() {
         let c = colony_DetailView.colony
         do {
-            try c!.evolve()
+            try c.evolve()
             configureView()
         }catch EvolveErrors.Colony_Dead {
             configureView()
-            GenNumberLabel.text = "Colony Dead at \(colony_DetailView.colony.generation)"
+            GenNumberLabel.text = "Colony Dead at gen \(colony_DetailView.colony.generation)"
             GenNumberLabel.backgroundColor = UIColor.red
             return
         }catch EvolveErrors.Colony_Stagnant {
             configureView()
-            GenNumberLabel.text = "Colony Stagnant at \(colony_DetailView.colony.generation)"
+            GenNumberLabel.text = "Colony Stagnant at gen \(colony_DetailView.colony.generation)"
             GenNumberLabel.backgroundColor = UIColor.red
             return
         }catch {
