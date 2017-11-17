@@ -16,25 +16,7 @@ class ControlCell: UITableViewCell {
         self.backgroundColor = UIColor.lightGray
     }
     
-/**
-    @IBAction func speedSliderMoved(_ sender: Any) {
-        
-    }
-    @IBAction func playTouched(_ sender: Any) {
-        
-    }
-    
-    @IBAction func pauseTouched(_ sender: Any) {
-    }
-    
-    @IBAction func evolveOnceTouched(_ sender: Any) {
-        detailViewController?.evolveColony()
-    }
-    
-    @IBAction func resetTouched(_ sender: Any) {
-    }
 
-    **/
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -16,7 +16,6 @@ class MasterViewController: UITableViewController {
     var ColonyID = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        colonies.append(Colony())
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -24,7 +23,15 @@ class MasterViewController: UITableViewController {
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+            
+            //initially have one colony already in table, already selected.
+            colonies.append(Colony())
+            self.detailViewController?.colony = colonies[0]
+            let firstIndex = IndexPath(row: 0, section: 0)
+            let scroll = UITableViewScrollPosition(rawValue: 0)! //unsure what this does, but it is just placeholder.
+            self.tableView.selectRow(at: firstIndex, animated: false, scrollPosition: scroll)
         }
+        
 
     }
 
@@ -48,11 +55,8 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                self.tableView.deselectRow(at: indexPath, animated: true)
                 let selectedColony = colonies[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.colony = selectedColony
@@ -68,24 +72,18 @@ class MasterViewController: UITableViewController {
 
     //Control Cell 
     
-    @IBAction func evolveOnceTouched(_ sender: Any) {
-        detailViewController?.evolveColony()
-    }
     override func numberOfSections(in tableView: UITableView) -> Int {
-      //  return 2
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      //  return section == 1 ? colonies.count : 1
         return colonies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             let colony = colonies[indexPath.row]
-            cell.textLabel!.text = "Colony \(colony.ID)"
-         //   ColonyID += 1 //THIS IS IN WRONG PLACE
+            cell.textLabel!.text = "Colony \(colony.ID!)"
             return cell
     }
 
@@ -103,20 +101,5 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-    
-    @IBAction func speedSliderMoved(_ sender: Any) {
-        
-    }
-    @IBAction func playTouched(_ sender: Any) {
-        
-    }
-
-    @IBAction func pauseTouched(_ sender: Any) {
-    }
-
-    @IBAction func resetTouched(_ sender: Any) {
-    }
-    
-
 }
 
