@@ -18,18 +18,13 @@ class DetailViewController: UIViewController {
     func configureView() {
         colony_DetailView.setNeedsDisplay()
     }
-
-
     
-
-    
-    
-    var colony : Colony = Colony(hasID: false)
+    var colony : Colony = Colony()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         colony_DetailView = self.stackView.subviews[0] as! ColonyView
-        ControlsBar = self.stackView.subviews[1]
+        ControlsBar = view.subviews[1]
         colony_DetailView.colony = colony
         GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
         updateSpeedLabel()
@@ -41,7 +36,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        stopEvolve()
     }
  
     
@@ -56,12 +51,15 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func PauseButtonPressed(_ sender: Any) {
+        stopEvolve()
+    }
+    
+    func stopEvolve() {
         if timer != nil {
             timer!.invalidate()
             timer = nil
         }
     }
-    
     
     @IBOutlet var EvolveSpeedLabel: UILabel!
     
@@ -82,7 +80,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var WrappingSwitch: UISwitch!
     
     @IBAction func WrappingSwitchChanged(_ sender: Any) {
-        colony_DetailView.colony.setWrappingTo(WrappingStatusLabel.isEnabled)
+        colony_DetailView.colony.setWrappingTo(WrappingSwitch.isOn)
         updateWrappingLabel()
     }
 
@@ -94,8 +92,9 @@ class DetailViewController: UIViewController {
     func updateWrappingLabel() {
         if colony_DetailView.colony.isWrapping() {
             WrappingStatusLabel.text = "Wrapping Enabled"
+        } else {
+            WrappingStatusLabel.text = "Wrapping Disabled"
         }
-        WrappingStatusLabel.text = "Wrapping Disabled"
     }
     
     func updateSpeedLabel() {
@@ -104,7 +103,7 @@ class DetailViewController: UIViewController {
             return
         }
         
-        let speed : String = String(describing: sliderRawtoTime()!.binade)
+        let speed : String = String(describing: (sliderRawtoTime()! - sliderRawtoTime()!.truncatingRemainder(dividingBy: 0.1)))
         EvolveSpeedLabel.text = "\(speed)s / gen"
     }
     
@@ -113,6 +112,7 @@ class DetailViewController: UIViewController {
     let interval_MIN = 0.2
     
     var timer : Timer? = Timer()
+    
     func sliderRawtoTime() -> Double? {
         if EvolveSpeedRawValue < 0.1 {
             return nil
@@ -140,6 +140,7 @@ class DetailViewController: UIViewController {
         }
         
         GenNumberLabel.backgroundColor = UIColor.clear
+        GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
         guard let interval = sliderRawtoTime() else {
             //do nothing. rawtime is nil. (not continuos)
             return

@@ -8,49 +8,52 @@
 
 import Foundation
 
-enum colonyTemplates {
-    case blank, glider, square
-}
-
 class Colony : CustomStringConvertible{
-    public static var IDcounter : Int = 0
-    public var temp : colonyTemplates = .blank
-    public var ID : Int? = nil
-    public var generation : Int
     public var aliveCells = Set<Coordinate>()
     public var cellsWide : Int
     private var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
     private var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
+    
+    private var temp : ColonyTemplate = .blank
+    public var generation : Int
     private var wrapping : Bool = true
-    public var name : String? = ""
+    public var name : String = ""
     
     
     var isDead: Bool { return aliveCells.isEmpty }
     
-    init(hasID : Bool = true, cellsWide: Int = 10) {
-        if hasID {
-            ID = Colony.IDcounter
-            Colony.IDcounter += 1
-        }
-        
+    init(cellsWide: Int = 10) {
         generation = 0
         self.cellsWide = cellsWide
         windowMIN = Coordinate(xCoor: 0, yCoor: 0)
         windowMAX = Coordinate(xCoor: cellsWide, yCoor: cellsWide)
         aliveCells = Set<Coordinate>()
-        
+    }
+    
+    func setTemplate(_ temp: ColonyTemplate) {
+        self.temp = temp
+    }
+    
+    func activateTemplate() {
+
         switch temp {
         case .glider:
-            setCellAlive(Coordinate(xCoor: 1, yCoor: 1))
-            setCellAlive(Coordinate(xCoor: 2, yCoor: 1))
-            setCellAlive(Coordinate(xCoor: 2, yCoor: 2))
-            
-        case .square:
-            setCellAlive(Coordinate(xCoor: 1, yCoor: 1))
-            setCellAlive(Coordinate(xCoor: 2, yCoor: 2))
+            resetColony()
+            setCellAlive(Coordinate(xCoor: 1, yCoor: 2))
+            setCellAlive(Coordinate(xCoor: 2, yCoor: 3))
+            setCellAlive(Coordinate(xCoor: 3, yCoor: 1))
+            setCellAlive(Coordinate(xCoor: 3, yCoor: 2))
             setCellAlive(Coordinate(xCoor: 3, yCoor: 3))
-
+            
+        case .basic:
+            resetColony()
+            setCellAlive(Coordinate(xCoor: 1, yCoor: 0))
+            setCellAlive(Coordinate(xCoor: 1, yCoor: 1))
+            setCellAlive(Coordinate(xCoor: 1, yCoor: 2))
+            setCellAlive(Coordinate(xCoor: 2, yCoor: 1))
+            
         case .blank:
+            resetColony()
             return
             
         }
@@ -91,23 +94,6 @@ class Colony : CustomStringConvertible{
         return wrapping
     }
     
-    var description: String {
-        var s : String = "Generation #" + String(generation) + "\n"
-        
-        for y in windowMIN.yCoor ... windowMAX.yCoor {
-            for x in windowMIN.xCoor ... windowMAX.xCoor {
-                if aliveCells.contains(Coordinate(xCoor: x, yCoor: y)) {
-                    s.append("* ")
-                } else {
-                    s.append("- ")
-                }
-            }
-            s.append("\n")
-        }
-        
-        return s
-    }
-    
     func isCellAlive(_ coor: Coordinate) -> Bool{
         let cell = coor
         return aliveCells.contains(cell)
@@ -117,9 +103,9 @@ class Colony : CustomStringConvertible{
         var relevantCells = [Coordinate : Int]()
         
         for aliveCell in aliveCells {
-            
             var surroundingCells = aliveCell.getSurroundingCells().filter({$0.isWithinCoordinates(c1: windowMIN, c2: windowMAX)})
             
+            //Wrapping
             if wrapping {
                 if aliveCell.xCoor == 0 {
                     var wrappedCells = Set<Coordinate>()
@@ -173,6 +159,7 @@ class Colony : CustomStringConvertible{
             }
         }
 
+        //Handle specific cases relevant to further generations
         if nextGen.isEmpty {
             aliveCells = nextGen
             generation += 1
@@ -188,4 +175,22 @@ class Colony : CustomStringConvertible{
         aliveCells = nextGen
         generation += 1
     }
+    
+    var description: String {
+        var s : String = "Generation #" + String(generation) + "\n"
+        
+        for y in windowMIN.yCoor ... windowMAX.yCoor {
+            for x in windowMIN.xCoor ... windowMAX.xCoor {
+                if aliveCells.contains(Coordinate(xCoor: x, yCoor: y)) {
+                    s.append("* ")
+                } else {
+                    s.append("- ")
+                }
+            }
+            s.append("\n")
+        }
+        
+        return s
+    }
+    
 }

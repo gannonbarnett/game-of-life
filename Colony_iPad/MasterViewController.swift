@@ -13,21 +13,20 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var colonies = [Colony]()
 
-    func printTest() {
-        print("Got to master!")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(openPopUpView(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
             
             //initially have one colony already in table, already selected.
-            colonies.append(Colony())
+            let firstColony = Colony()
+            firstColony.name = "First Colony!"
+            colonies.append(firstColony)
             self.detailViewController?.colony = colonies[0]
             let firstIndex = IndexPath(row: 0, section: 0)
             let scroll = UITableViewScrollPosition(rawValue: 0)! //unsure what this does, but it is just placeholder.
@@ -40,8 +39,6 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-        
-        print("view just appeared.")
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,22 +46,14 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func insertNewObject(_ sender: Any) {
+    func openPopUpView(_ sender: Any) {
         let NewColonyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewColonyPopUpID") as! NewColonyViewController
         self.addChildViewController(NewColonyVC)
         NewColonyVC.view.frame = self.view.frame
         self.view.addSubview(NewColonyVC.view)
         NewColonyVC.didMove(toParentViewController: self)
-        var colonyName = NewColonyVC.colonyName
-
-        colonyName = NewColonyVC.colonyName
-        print("\(colonyName)")
-        let newColony = Colony()
-        colonies.insert(newColony, at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
-
+    
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,7 +87,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             let colony = colonies[indexPath.row]
-            cell.textLabel!.text = "Colony \(colony.ID!) \(colony.name)"
+            cell.textLabel!.text = "\(colony.name)"
             return cell
     }
 

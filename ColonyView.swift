@@ -17,7 +17,7 @@ struct Line {
 
 class ColonyView: UIView {
     
-    public var colony : Colony = Colony(hasID: true, cellsWide: 10)
+    public var colony : Colony = Colony(cellsWide: 10)
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
     
@@ -83,13 +83,27 @@ class ColonyView: UIView {
         b.stroke()
     }
     
+    var lastCoordinate : Coordinate? = nil
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
-        
+        let location = touch.location(in: self)
+        let coorTouched = locationToCoor(location)
+
+        colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
+        lastCoordinate = coorTouched
+        setNeedsDisplay()
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
         let location = touch.location(in: self)
         let coorTouched = locationToCoor(location)
         
-        colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
-        setNeedsDisplay()
+        if lastCoordinate != coorTouched {
+            colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
+            setNeedsDisplay()
+        }
+        lastCoordinate = coorTouched
     }
 }
