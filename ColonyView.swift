@@ -48,6 +48,7 @@ class ColonyView: UIView {
             colorCellAlive(cell)
         }
         
+        /**
         for x in 0 ..< cellsInView + 1 {
             let start = CGPoint(x: INSET + CGFloat(x) * cellWidth, y: INSET)
             let end = CGPoint(x: CGFloat(x) * cellWidth + INSET, y: w - INSET)
@@ -58,7 +59,7 @@ class ColonyView: UIView {
             let start = CGPoint(x: INSET, y: INSET + CGFloat(y) * cellWidth)
             let end = CGPoint(x: w - INSET, y: CGFloat(y) * cellWidth + INSET)
             drawLine(Line(begin: start, end: end))
-        }
+        }**/
         
     }
     

@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
         ControlsBar = view.subviews[1]
         colony_DetailView.colony = colony
         GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
+        super.navigationItem.title = "\(colony.name)"
         updateSpeedLabel()
         updateWrappingLabel()
         WrappingSwitch.setOn(colony_DetailView.colony.isWrapping(), animated: false)
@@ -123,8 +124,7 @@ class DetailViewController: UIViewController {
     func evolveColony() {
         let c = colony_DetailView.colony
         do {
-            try c.evolve()
-            configureView()
+            try c.evolve();configureView()
         }catch EvolveErrors.Colony_Dead {
             configureView()
             GenNumberLabel.text = "Colony Dead at gen \(colony_DetailView.colony.generation)"
@@ -152,6 +152,14 @@ class DetailViewController: UIViewController {
     func timerEvolve() {
         timer?.invalidate()
         evolveColony()
+    }
+    
+    @IBAction func SaveAsTemplatePressed(_ sender: Any) {
+        saveAsTemplate()
+    }
+    
+    func saveAsTemplate() {
+        templateSets.addNewTemplate(aliveCells: colony.aliveCells, withName: colony.name)
     }
     
 }

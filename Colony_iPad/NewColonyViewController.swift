@@ -13,10 +13,15 @@ class NewColonyViewController: UIViewController {
     @IBOutlet var ColonyPickerView: UIPickerView!
     @IBOutlet var ColonyNameTextField: UITextField!
     
+    func activateTemplateOf(colony: Colony) {
+        let temp : String = colony.getTemplate()
+        colony.aliveCells = templateSets.templates[temp]!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         ColonyPickerView.dataSource = self
         ColonyPickerView.delegate = self
         // Do any additional setup after loading the view.
@@ -30,10 +35,10 @@ class NewColonyViewController: UIViewController {
     var colonyName : String {
         return ColonyNameTextField.text!
     }
-
-    var selectedTemplate : ColonyTemplate {
-        let stringPicked = templateNames[ColonyPickerView.selectedRow(inComponent: 0)]
-        return ColonyTemplate(rawValue: stringPicked)!
+    
+    var selectedTemplate : String {
+        let templateNames = Array(templateSets.templates.keys)
+        return templateNames[ColonyPickerView.selectedRow(inComponent: 0)]
     }
     
     @IBAction func CreateButtonPressed(_ sender: Any) {
@@ -41,17 +46,18 @@ class NewColonyViewController: UIViewController {
             return
         }
         self.view.removeFromSuperview()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
         let masterView = self.parent! as! MasterViewController
         let newColony = Colony()
         newColony.name = colonyName
         newColony.setTemplate(selectedTemplate)
-        newColony.activateTemplate()
+        activateTemplateOf(colony: newColony)
         masterView.colonies.insert(newColony, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         masterView.tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    @IBAction func CancelButtonPressed(_ sender: Any) {
+        self.view.removeFromSuperview()
     }
 }
 
@@ -62,10 +68,11 @@ extension NewColonyViewController : UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return templateNames.count
+        return templateSets.templates.count 
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let templateNames = Array(templateSets.templates.keys)
         return templateNames[row] as String
     }
 

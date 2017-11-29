@@ -12,8 +12,35 @@ enum EvolveErrors : Error {
     case Colony_Dead, Colony_Stagnant
 }
 
-enum ColonyTemplate : String {
-    case blank = "Blank", basic = "Basic", glider = "Glider Gun"
+struct TemplateSource {
+    var templates : [String : Set<Coordinate>] = [:]
+    
+    //Given templates
+    private let gliderSet : Set<Coordinate> = [Coordinate(xCoor: 1, yCoor: 2),
+                                       Coordinate(xCoor: 2, yCoor: 3),
+                                       Coordinate(xCoor: 3, yCoor: 1),
+                                       Coordinate(xCoor: 3, yCoor: 2),
+                                       Coordinate(xCoor: 3, yCoor: 3)]
+    
+    private let basicSet : Set<Coordinate> = [Coordinate(xCoor: 1, yCoor: 2),
+                                      Coordinate(xCoor: 2, yCoor: 3),
+                                      Coordinate(xCoor: 3, yCoor: 1),
+                                      Coordinate(xCoor: 3, yCoor: 2),
+                                      Coordinate(xCoor: 3, yCoor: 3)]
+    
+    private let blankSet : Set<Coordinate> = []
+
+    init() {
+        templates["Glider Gun"] = gliderSet
+        templates["Basic"] = basicSet
+        templates["Blank"] = blankSet
+    }
+    
+    mutating func addNewTemplate(aliveCells: Set<Coordinate>, withName name: String) {
+        templates[name] = aliveCells
+    }
+    
 }
 
-var templateNames : [String] = ["Blank", "Basic", "Glider Gun"]
+var templateSets = TemplateSource()
+

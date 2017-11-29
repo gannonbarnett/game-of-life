@@ -14,7 +14,7 @@ class Colony : CustomStringConvertible{
     private var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
     private var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
     
-    private var temp : ColonyTemplate = .blank
+    private var temp : String = "Blank"
     public var generation : Int
     private var wrapping : Bool = true
     public var name : String = ""
@@ -30,33 +30,12 @@ class Colony : CustomStringConvertible{
         aliveCells = Set<Coordinate>()
     }
     
-    func setTemplate(_ temp: ColonyTemplate) {
+    func setTemplate(_ temp: String) {
         self.temp = temp
     }
     
-    func activateTemplate() {
-
-        switch temp {
-        case .glider:
-            resetColony()
-            setCellAlive(Coordinate(xCoor: 1, yCoor: 2))
-            setCellAlive(Coordinate(xCoor: 2, yCoor: 3))
-            setCellAlive(Coordinate(xCoor: 3, yCoor: 1))
-            setCellAlive(Coordinate(xCoor: 3, yCoor: 2))
-            setCellAlive(Coordinate(xCoor: 3, yCoor: 3))
-            
-        case .basic:
-            resetColony()
-            setCellAlive(Coordinate(xCoor: 1, yCoor: 0))
-            setCellAlive(Coordinate(xCoor: 1, yCoor: 1))
-            setCellAlive(Coordinate(xCoor: 1, yCoor: 2))
-            setCellAlive(Coordinate(xCoor: 2, yCoor: 1))
-            
-        case .blank:
-            resetColony()
-            return
-            
-        }
+    func getTemplate() -> String {
+        return temp
     }
     
     func setWindow(xMIN: Int, xMAX: Int, yMIN: Int, yMAX: Int) {

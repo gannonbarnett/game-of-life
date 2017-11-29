@@ -9,10 +9,10 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
+    
     var detailViewController: DetailViewController? = nil
     var colonies = [Colony]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,19 +33,19 @@ class MasterViewController: UITableViewController {
             self.tableView.selectRow(at: firstIndex, animated: false, scrollPosition: scroll)
         }
         
-
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func openPopUpView(_ sender: Any) {
         let NewColonyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewColonyPopUpID") as! NewColonyViewController
         self.addChildViewController(NewColonyVC)
@@ -55,7 +55,7 @@ class MasterViewController: UITableViewController {
     }
     
     // MARK: - Segues
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -71,32 +71,32 @@ class MasterViewController: UITableViewController {
         }
         
     }
-
+    
     // MARK: - Table View
-
-    //Control Cell 
+    
+    //Control Cell
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colonies.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            let colony = colonies[indexPath.row]
-            cell.textLabel!.text = "\(colony.name)"
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let colony = colonies[indexPath.row]
+        cell.textLabel!.text = "\(colony.name)"
+        return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-       // guard indexPath.section == 1 else {return false}
+        // guard indexPath.section == 1 else {return false}
         return true
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             colonies.remove(at: indexPath.row)

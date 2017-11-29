@@ -20,6 +20,10 @@
 		164B65E91FB0DD3900416B03 /* Colony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E81FB0DD3900416B03 /* Colony.swift */; };
 		164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65EC1FB3EF6B00416B03 /* ColonyView.swift */; };
 		16D7513D1FC26F2A00658263 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D7513C1FC26F2A00658263 /* Enums.swift */; };
+		16D7513F1FC3546300658263 /* MoreControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D7513E1FC3546300658263 /* MoreControlsView.swift */; };
+		16D751431FC388E600658263 /* MoreControlsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D751421FC388E600658263 /* MoreControlsBar.xib */; };
+		16D751451FC74BD400658263 /* DefaultControlsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D751441FC74BD400658263 /* DefaultControlsBar.xib */; };
+		16D751481FC74D2000658263 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D751471FC74D2000658263 /* ControlsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		164B65E81FB0DD3900416B03 /* Colony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colony.swift; sourceTree = "<group>"; };
 		164B65EC1FB3EF6B00416B03 /* ColonyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColonyView.swift; path = ../ColonyView.swift; sourceTree = "<group>"; };
 		16D7513C1FC26F2A00658263 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		16D7513E1FC3546300658263 /* MoreControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreControlsView.swift; sourceTree = "<group>"; };
+		16D751421FC388E600658263 /* MoreControlsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreControlsBar.xib; path = ../MoreControlsBar.xib; sourceTree = "<group>"; };
+		16D751441FC74BD400658263 /* DefaultControlsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DefaultControlsBar.xib; path = ../DefaultControlsBar.xib; sourceTree = "<group>"; };
+		16D751471FC74D2000658263 /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +123,12 @@
 				160F7CEF1FBD34FC00A25674 /* NewColonyViewController.swift */,
 				164B65EC1FB3EF6B00416B03 /* ColonyView.swift */,
 				160F7CB11FBD2E2000A25674 /* Main.storyboard */,
+				16D7513E1FC3546300658263 /* MoreControlsView.swift */,
+				16D751471FC74D2000658263 /* ControlsView.swift */,
 				164B65E61FB0DD3000416B03 /* coordinate.swift */,
 				164B65E81FB0DD3900416B03 /* Colony.swift */,
 				16D7513C1FC26F2A00658263 /* Enums.swift */,
+				16D751461FC74BE400658263 /* ControlsBar */,
 				164B65BB1FB0D8A700416B03 /* Assets.xcassets */,
 				164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */,
 				164B65C01FB0D8A700416B03 /* Info.plist */,
@@ -141,6 +152,15 @@
 				164B65D61FB0D8A800416B03 /* Info.plist */,
 			);
 			path = Colony_iPadUITests;
+			sourceTree = "<group>";
+		};
+		16D751461FC74BE400658263 /* ControlsBar */ = {
+			isa = PBXGroup;
+			children = (
+				16D751441FC74BD400658263 /* DefaultControlsBar.xib */,
+				16D751421FC388E600658263 /* MoreControlsBar.xib */,
+			);
+			name = ControlsBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +273,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D751431FC388E600658263 /* MoreControlsBar.xib in Resources */,
 				160F7CB21FBD2E2000A25674 /* Main.storyboard in Resources */,
 				164B65BF1FB0D8A700416B03 /* LaunchScreen.storyboard in Resources */,
+				16D751451FC74BD400658263 /* DefaultControlsBar.xib in Resources */,
 				164B65BC1FB0D8A700416B03 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D7513F1FC3546300658263 /* MoreControlsView.swift in Sources */,
 				164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */,
 				164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */,
 				164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */,
@@ -287,6 +310,7 @@
 				160F7CF01FBD34FC00A25674 /* NewColonyViewController.swift in Sources */,
 				164B65E91FB0DD3900416B03 /* Colony.swift in Sources */,
 				16D7513D1FC26F2A00658263 /* Enums.swift in Sources */,
+				16D751481FC74D2000658263 /* ControlsView.swift in Sources */,
 				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
