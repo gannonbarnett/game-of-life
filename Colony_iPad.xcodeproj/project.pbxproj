@@ -23,7 +23,6 @@
 		16D7513F1FC3546300658263 /* MoreControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D7513E1FC3546300658263 /* MoreControlsView.swift */; };
 		16D751431FC388E600658263 /* MoreControlsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D751421FC388E600658263 /* MoreControlsBar.xib */; };
 		16D751451FC74BD400658263 /* DefaultControlsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D751441FC74BD400658263 /* DefaultControlsBar.xib */; };
-		16D751481FC74D2000658263 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D751471FC74D2000658263 /* ControlsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		16D7513E1FC3546300658263 /* MoreControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreControlsView.swift; sourceTree = "<group>"; };
 		16D751421FC388E600658263 /* MoreControlsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreControlsBar.xib; path = ../MoreControlsBar.xib; sourceTree = "<group>"; };
 		16D751441FC74BD400658263 /* DefaultControlsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DefaultControlsBar.xib; path = ../DefaultControlsBar.xib; sourceTree = "<group>"; };
-		16D751471FC74D2000658263 /* ControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +122,6 @@
 				164B65EC1FB3EF6B00416B03 /* ColonyView.swift */,
 				160F7CB11FBD2E2000A25674 /* Main.storyboard */,
 				16D7513E1FC3546300658263 /* MoreControlsView.swift */,
-				16D751471FC74D2000658263 /* ControlsView.swift */,
 				164B65E61FB0DD3000416B03 /* coordinate.swift */,
 				164B65E81FB0DD3900416B03 /* Colony.swift */,
 				16D7513C1FC26F2A00658263 /* Enums.swift */,
@@ -310,7 +307,6 @@
 				160F7CF01FBD34FC00A25674 /* NewColonyViewController.swift in Sources */,
 				164B65E91FB0DD3900416B03 /* Colony.swift in Sources */,
 				16D7513D1FC26F2A00658263 /* Enums.swift in Sources */,
-				16D751481FC74D2000658263 /* ControlsView.swift in Sources */,
 				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

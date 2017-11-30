@@ -9,18 +9,17 @@
 import Foundation
 
 class Colony : CustomStringConvertible{
-    public var aliveCells = Set<Coordinate>()
+    private var aliveCells = Set<Coordinate>()
     public var cellsWide : Int
     private var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
     private var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
     
     private var temp : String = "Blank"
-    public var generation : Int
+    private var generation : Int
     private var wrapping : Bool = true
-    public var name : String = ""
+    public var name : String = "Untitled"
     
-    
-    var isDead: Bool { return aliveCells.isEmpty }
+    public var isDead: Bool { return aliveCells.isEmpty }
     
     init(cellsWide: Int = 10) {
         generation = 0
@@ -28,6 +27,10 @@ class Colony : CustomStringConvertible{
         windowMIN = Coordinate(xCoor: 0, yCoor: 0)
         windowMAX = Coordinate(xCoor: cellsWide, yCoor: cellsWide)
         aliveCells = Set<Coordinate>()
+    }
+    
+    func getGeneration() -> Int {
+        return generation
     }
     
     func setTemplate(_ temp: String) {
@@ -50,12 +53,16 @@ class Colony : CustomStringConvertible{
         print("Y (\(windowMIN.yCoor), \(windowMAX.yCoor)")
     }
     
+    func getAliveCells() -> Set<Coordinate> {
+        return aliveCells
+    }
+    
     func setCellAlive(_ cell : Coordinate) {
+        guard cell.isWithinCoordinates(c1: windowMIN, c2: windowMAX) else {return}
         aliveCells.insert(cell)
     }
     
     func setCellDead(_ cell : Coordinate) {
-
         if aliveCells.contains(cell) {
             aliveCells.remove(cell)
         }

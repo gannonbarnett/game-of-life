@@ -26,11 +26,10 @@ class DetailViewController: UIViewController {
         colony_DetailView = self.stackView.subviews[0] as! ColonyView
         ControlsBar = view.subviews[1]
         colony_DetailView.colony = colony
-        GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
+        GenNumberLabel.text = "Generation \(colony_DetailView.colony.getGeneration())"
         super.navigationItem.title = "\(colony.name)"
         updateSpeedLabel()
-        updateWrappingLabel()
-        WrappingSwitch.setOn(colony_DetailView.colony.isWrapping(), animated: false)
+        if colony_DetailView.colony.isWrapping() { WrappingSwitch.selectedSegmentIndex = 0 } else { WrappingSwitch.selectedSegmentIndex = 1 }
         self.configureView()
     }
 
@@ -75,27 +74,21 @@ class DetailViewController: UIViewController {
     }
 
     @IBOutlet var GenNumberLabel: UILabel!
-    
-    @IBOutlet var WrappingStatusLabel: UILabel!
 
-    @IBOutlet var WrappingSwitch: UISwitch!
+    @IBOutlet var WrappingSwitch: UISegmentedControl!
     
     @IBAction func WrappingSwitchChanged(_ sender: Any) {
-        colony_DetailView.colony.setWrappingTo(WrappingSwitch.isOn)
-        updateWrappingLabel()
+        colony_DetailView.colony.setWrappingTo(WrappingSwitch.isEnabledForSegment(at: 0))
+    }
+
+    @IBOutlet var GridSwitch: UISegmentedControl!
+    @IBAction func GridSwitchChanged(_ sender: Any) {
+        self.colony_DetailView.setGridVisible(GridSwitch.isEnabledForSegment(at: 0))
     }
 
     @IBAction func ClearButtonTouched(_ sender: Any) {
         colony_DetailView.colony.resetColony()
         configureView()
-    }
-    
-    func updateWrappingLabel() {
-        if colony_DetailView.colony.isWrapping() {
-            WrappingStatusLabel.text = "Wrapping Enabled"
-        } else {
-            WrappingStatusLabel.text = "Wrapping Disabled"
-        }
     }
     
     func updateSpeedLabel() {
@@ -127,12 +120,12 @@ class DetailViewController: UIViewController {
             try c.evolve();configureView()
         }catch EvolveErrors.Colony_Dead {
             configureView()
-            GenNumberLabel.text = "Colony Dead at gen \(colony_DetailView.colony.generation)"
+            GenNumberLabel.text = "Colony Dead at gen \(colony_DetailView.colony.getGeneration())"
             GenNumberLabel.backgroundColor = UIColor.red
             return
         }catch EvolveErrors.Colony_Stagnant {
             configureView()
-            GenNumberLabel.text = "Colony Stagnant at gen \(colony_DetailView.colony.generation)"
+            GenNumberLabel.text = "Colony Stagnant at gen \(colony_DetailView.colony.getGeneration())"
             GenNumberLabel.backgroundColor = UIColor.red
             return
         }catch {
@@ -140,7 +133,7 @@ class DetailViewController: UIViewController {
         }
         
         GenNumberLabel.backgroundColor = UIColor.clear
-        GenNumberLabel.text = "Generation \(colony_DetailView.colony.generation)"
+        GenNumberLabel.text = "Generation \(colony_DetailView.colony.getGeneration())"
         guard let interval = sliderRawtoTime() else {
             //do nothing. rawtime is nil. (not continuos)
             return
@@ -159,7 +152,7 @@ class DetailViewController: UIViewController {
     }
     
     func saveAsTemplate() {
-        templateSets.addNewTemplate(aliveCells: colony.aliveCells, withName: colony.name)
+        templateSets.addNewTemplate(aliveCells: colony.getAliveCells(), withName: colony.name)
     }
     
 }

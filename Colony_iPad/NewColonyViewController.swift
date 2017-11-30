@@ -15,7 +15,9 @@ class NewColonyViewController: UIViewController {
     
     func activateTemplateOf(colony: Colony) {
         let temp : String = colony.getTemplate()
-        colony.aliveCells = templateSets.templates[temp]!
+        for cell in templateSets.templates[temp]! {
+            colony.setCellAlive(cell)
+        }
     }
     
     override func viewDidLoad() {
@@ -24,6 +26,7 @@ class NewColonyViewController: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         ColonyPickerView.dataSource = self
         ColonyPickerView.delegate = self
+        updateColonySizeLabel()
         // Do any additional setup after loading the view.
     }
 
@@ -47,7 +50,7 @@ class NewColonyViewController: UIViewController {
         }
         self.view.removeFromSuperview()
         let masterView = self.parent! as! MasterViewController
-        let newColony = Colony()
+        let newColony = Colony(cellsWide: colonySize)
         newColony.name = colonyName
         newColony.setTemplate(selectedTemplate)
         activateTemplateOf(colony: newColony)
@@ -58,6 +61,20 @@ class NewColonyViewController: UIViewController {
     
     @IBAction func CancelButtonPressed(_ sender: Any) {
         self.view.removeFromSuperview()
+    }
+    
+    @IBOutlet var ColonySizeLabel: UILabel!
+    var colonySize : Int = 60
+    
+    @IBAction func ColonySizeSliderMoved(_ sender: Any) {
+        updateColonySizeLabel()
+    }
+    
+    @IBOutlet var ColonySizeSlider: UISlider!
+    
+    func updateColonySizeLabel() {
+        colonySize = Int(ColonySizeSlider.value * 95) + 5
+        ColonySizeLabel.text = String(colonySize)
     }
 }
 

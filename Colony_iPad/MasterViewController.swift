@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     var detailViewController: DetailViewController? = nil
     var colonies = [Colony]()
@@ -52,6 +52,7 @@ class MasterViewController: UITableViewController {
         NewColonyVC.view.frame = self.view.frame
         self.view.addSubview(NewColonyVC.view)
         NewColonyVC.didMove(toParentViewController: self)
+    
     }
     
     // MARK: - Segues
