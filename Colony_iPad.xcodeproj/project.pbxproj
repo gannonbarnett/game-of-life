@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		160F7CB21FBD2E2000A25674 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160F7CB11FBD2E2000A25674 /* Main.storyboard */; };
-		160F7CF01FBD34FC00A25674 /* NewColonyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160F7CEF1FBD34FC00A25674 /* NewColonyViewController.swift */; };
 		164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65B21FB0D8A700416B03 /* AppDelegate.swift */; };
 		164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65B41FB0D8A700416B03 /* MasterViewController.swift */; };
 		164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65B61FB0D8A700416B03 /* DetailViewController.swift */; };
@@ -19,10 +18,11 @@
 		164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E61FB0DD3000416B03 /* coordinate.swift */; };
 		164B65E91FB0DD3900416B03 /* Colony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E81FB0DD3900416B03 /* Colony.swift */; };
 		164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65EC1FB3EF6B00416B03 /* ColonyView.swift */; };
+		16BDB03B1FD8EBBC00F35540 /* NewColonyTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BDB03A1FD8EBBC00F35540 /* NewColonyTableVC.swift */; };
+		16BDB03D1FD9B22000F35540 /* ColonyName_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BDB03C1FD9B22000F35540 /* ColonyName_Cell.swift */; };
+		16BDB03F1FD9B24B00F35540 /* Size_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BDB03E1FD9B24B00F35540 /* Size_Cell.swift */; };
 		16D7513D1FC26F2A00658263 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D7513C1FC26F2A00658263 /* Enums.swift */; };
-		16D7513F1FC3546300658263 /* MoreControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D7513E1FC3546300658263 /* MoreControlsView.swift */; };
-		16D751431FC388E600658263 /* MoreControlsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D751421FC388E600658263 /* MoreControlsBar.xib */; };
-		16D751451FC74BD400658263 /* DefaultControlsBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16D751441FC74BD400658263 /* DefaultControlsBar.xib */; };
+		16D8DDB11FDD8336007D2DBE /* SettingsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8DDB01FDD8336007D2DBE /* SettingsTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		160F7CB11FBD2E2000A25674 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
-		160F7CEF1FBD34FC00A25674 /* NewColonyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewColonyViewController.swift; sourceTree = "<group>"; };
 		164B65AF1FB0D8A700416B03 /* Colony_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colony_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164B65B21FB0D8A700416B03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		164B65B41FB0D8A700416B03 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -61,10 +60,11 @@
 		164B65E61FB0DD3000416B03 /* coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coordinate.swift; sourceTree = "<group>"; };
 		164B65E81FB0DD3900416B03 /* Colony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colony.swift; sourceTree = "<group>"; };
 		164B65EC1FB3EF6B00416B03 /* ColonyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColonyView.swift; path = ../ColonyView.swift; sourceTree = "<group>"; };
+		16BDB03A1FD8EBBC00F35540 /* NewColonyTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewColonyTableVC.swift; path = ../NewColonyTableVC.swift; sourceTree = "<group>"; };
+		16BDB03C1FD9B22000F35540 /* ColonyName_Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColonyName_Cell.swift; sourceTree = "<group>"; };
+		16BDB03E1FD9B24B00F35540 /* Size_Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size_Cell.swift; sourceTree = "<group>"; };
 		16D7513C1FC26F2A00658263 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		16D7513E1FC3546300658263 /* MoreControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreControlsView.swift; sourceTree = "<group>"; };
-		16D751421FC388E600658263 /* MoreControlsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreControlsBar.xib; path = ../MoreControlsBar.xib; sourceTree = "<group>"; };
-		16D751441FC74BD400658263 /* DefaultControlsBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DefaultControlsBar.xib; path = ../DefaultControlsBar.xib; sourceTree = "<group>"; };
+		16D8DDB01FDD8336007D2DBE /* SettingsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableVC.swift; path = ../SettingsTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,14 +118,15 @@
 				164B65B21FB0D8A700416B03 /* AppDelegate.swift */,
 				164B65B41FB0D8A700416B03 /* MasterViewController.swift */,
 				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
-				160F7CEF1FBD34FC00A25674 /* NewColonyViewController.swift */,
 				164B65EC1FB3EF6B00416B03 /* ColonyView.swift */,
 				160F7CB11FBD2E2000A25674 /* Main.storyboard */,
-				16D7513E1FC3546300658263 /* MoreControlsView.swift */,
+				16BDB03E1FD9B24B00F35540 /* Size_Cell.swift */,
+				16BDB03A1FD8EBBC00F35540 /* NewColonyTableVC.swift */,
+				16D8DDB01FDD8336007D2DBE /* SettingsTableVC.swift */,
+				16BDB03C1FD9B22000F35540 /* ColonyName_Cell.swift */,
 				164B65E61FB0DD3000416B03 /* coordinate.swift */,
 				164B65E81FB0DD3900416B03 /* Colony.swift */,
 				16D7513C1FC26F2A00658263 /* Enums.swift */,
-				16D751461FC74BE400658263 /* ControlsBar */,
 				164B65BB1FB0D8A700416B03 /* Assets.xcassets */,
 				164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */,
 				164B65C01FB0D8A700416B03 /* Info.plist */,
@@ -149,15 +150,6 @@
 				164B65D61FB0D8A800416B03 /* Info.plist */,
 			);
 			path = Colony_iPadUITests;
-			sourceTree = "<group>";
-		};
-		16D751461FC74BE400658263 /* ControlsBar */ = {
-			isa = PBXGroup;
-			children = (
-				16D751441FC74BD400658263 /* DefaultControlsBar.xib */,
-				16D751421FC388E600658263 /* MoreControlsBar.xib */,
-			);
-			name = ControlsBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,10 +262,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16D751431FC388E600658263 /* MoreControlsBar.xib in Resources */,
 				160F7CB21FBD2E2000A25674 /* Main.storyboard in Resources */,
 				164B65BF1FB0D8A700416B03 /* LaunchScreen.storyboard in Resources */,
-				16D751451FC74BD400658263 /* DefaultControlsBar.xib in Resources */,
 				164B65BC1FB0D8A700416B03 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,12 +289,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16D7513F1FC3546300658263 /* MoreControlsView.swift in Sources */,
 				164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */,
 				164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */,
 				164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */,
 				164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */,
-				160F7CF01FBD34FC00A25674 /* NewColonyViewController.swift in Sources */,
+				16BDB03D1FD9B22000F35540 /* ColonyName_Cell.swift in Sources */,
+				16D8DDB11FDD8336007D2DBE /* SettingsTableVC.swift in Sources */,
+				16BDB03F1FD9B24B00F35540 /* Size_Cell.swift in Sources */,
+				16BDB03B1FD8EBBC00F35540 /* NewColonyTableVC.swift in Sources */,
 				164B65E91FB0DD3900416B03 /* Colony.swift in Sources */,
 				16D7513D1FC26F2A00658263 /* Enums.swift in Sources */,
 				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,

@@ -15,7 +15,7 @@ class NewColonyViewController: UIViewController {
     
     func activateTemplateOf(colony: Colony) {
         let temp : String = colony.getTemplate()
-        for cell in templateSets.templates[temp]! {
+        for cell in TemplateSource.getTempFromString(temp)! {
             colony.setCellAlive(cell)
         }
     }
@@ -40,7 +40,7 @@ class NewColonyViewController: UIViewController {
     }
     
     var selectedTemplate : String {
-        let templateNames = Array(templateSets.templates.keys)
+        let templateNames = TemplateSource.defaultTemplates.map({$0.name})
         return templateNames[ColonyPickerView.selectedRow(inComponent: 0)]
     }
     
@@ -81,16 +81,18 @@ class NewColonyViewController: UIViewController {
 extension NewColonyViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return templateSets.templates.count 
+       // return templateSets.templates.count
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let templateNames = Array(templateSets.templates.keys)
-        return templateNames[row] as String
+        //let templateNames = Array(templateSets.templates.keys)
+       // return templateNames[row] as String
+        return "t"
     }
 
 }

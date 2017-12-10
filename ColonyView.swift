@@ -23,15 +23,31 @@ class ColonyView: UIView {
     
     var gridEnabled : Bool = false
     
-    let cellColor = UIColor(red:0.11, green:0.31, blue:0.43, alpha:1.0)
-    let colonyColor = UIColor(red:0.87, green:0.86, blue:0.63, alpha:1.0)
+    let cellColor = UIColor.blue
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture(_:)))
+        addGestureRecognizer(pinchGestureRecognizer)
+    }
+    
+    func pinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        let gestureOrigin = gestureRecognizer.location(ofTouch: 0, in: self)
+        let coorOrigin = locationToCoor(gestureOrigin)
+        let scale = gestureRecognizer.scale
+        let oldWidth = colony.windowMAX.xCoor - colony.windowMIN.xCoor
+        let newWidth = Int(scale * CGFloat(oldWidth))
+        colony.setWindow(origin: coorOrigin, width: newWidth)
+        setNeedsDisplay()
+    }
     
     func setGridVisible(_ status: Bool) {
         gridEnabled = status
+        setNeedsDisplay()
     }
     
     private var cellsInView : Int {
-        return colony.cellsWide
+        return colony.windowMAX.xCoor - colony.windowMIN.xCoor
     }
     
     private var cellWidth : CGFloat {
@@ -51,26 +67,26 @@ class ColonyView: UIView {
     
     override func draw(_ rect : CGRect) {
         let w = frame.width
-        
         for cell in colony.getAliveCells() {
-         //   if cell.xCoor < colony.cellsWide && cell.yCoor < colony.cellsWide {
                 colorCellAlive(cell)
-         //   }
         }
-        var color : UIColor = colonyColor
-        if gridEnabled { color = UIColor.black }
+        
+        var color = self.backgroundColor!
+        //make grid invisible if grid isn't enabled
+        if gridEnabled {color = UIColor.black}
+        
         for x in 0 ..< cellsInView + 1 {
             let start = CGPoint(x: INSET + CGFloat(x) * cellWidth, y: INSET)
             let end = CGPoint(x: CGFloat(x) * cellWidth + INSET, y: w - INSET)
             drawLine(Line(begin: start, end: end), withColor: color)
         }
         
+        
         for y in 0 ..< cellsInView + 1 {
             let start = CGPoint(x: INSET, y: INSET + CGFloat(y) * cellWidth)
             let end = CGPoint(x: w - INSET, y: CGFloat(y) * cellWidth + INSET)
             drawLine(Line(begin: start, end: end), withColor: color)
         }
-
     }
     
     private func locationToCoor(_ location : CGPoint) -> Coordinate {

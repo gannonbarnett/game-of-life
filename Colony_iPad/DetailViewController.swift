@@ -31,8 +31,8 @@ class DetailViewController: UIViewController {
         updateSpeedLabel()
         if colony_DetailView.colony.isWrapping() { WrappingSwitch.selectedSegmentIndex = 0 } else { WrappingSwitch.selectedSegmentIndex = 1 }
         self.configureView()
-    }
 
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -78,12 +78,13 @@ class DetailViewController: UIViewController {
     @IBOutlet var WrappingSwitch: UISegmentedControl!
     
     @IBAction func WrappingSwitchChanged(_ sender: Any) {
-        colony_DetailView.colony.setWrappingTo(WrappingSwitch.isEnabledForSegment(at: 0))
+        colony_DetailView.colony.setWrappingTo(WrappingSwitch.selectedSegmentIndex == 0)
     }
 
     @IBOutlet var GridSwitch: UISegmentedControl!
     @IBAction func GridSwitchChanged(_ sender: Any) {
-        self.colony_DetailView.setGridVisible(GridSwitch.isEnabledForSegment(at: 0))
+        self.colony_DetailView.setGridVisible(GridSwitch.selectedSegmentIndex == 0)
+        print("grid status to \(GridSwitch.selectedSegmentIndex == 0)")
     }
 
     @IBAction func ClearButtonTouched(_ sender: Any) {
@@ -140,6 +141,7 @@ class DetailViewController: UIViewController {
         }
         
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerEvolve), userInfo: nil, repeats: false)
+        
     }
     
     func timerEvolve() {
@@ -148,12 +150,29 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func SaveAsTemplatePressed(_ sender: Any) {
-        saveAsTemplate()
+        presentAlert()
     }
     
-    func saveAsTemplate() {
-        templateSets.addNewTemplate(aliveCells: colony.getAliveCells(), withName: colony.name)
+    func presentAlert() {
+        var templateName : String? = nil
+        
+        let alert = UIAlertController(title: "Create Template", message: "Template", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addTextField(configurationHandler: handleAlertTextField)
+        alert.addAction(UIAlertAction(title: "Create", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            let nameText = alert.textFields![0].text!
+            templateName = nameText
+            self.saveAsTemplate(withName: templateName!)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
+    func handleAlertTextField(_ field: UITextField) {
+        field.placeholder = "Template Name"
+    }
+    func saveAsTemplate(withName name : String) {
+        TemplateSource.addNewTemplate(aliveCells: colony.getAliveCells(), withName: name)
+    }
 }
 

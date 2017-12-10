@@ -24,6 +24,10 @@ struct Coordinate : Hashable, CustomStringConvertible{
         return lhs.xCoor == rhs.xCoor && lhs.yCoor == rhs.yCoor
     }
     
+    static func - (lhs: Coordinate, rhs: Coordinate) -> Coordinate {
+        return Coordinate(xCoor: lhs.xCoor - rhs.xCoor, yCoor: lhs.yCoor - rhs.yCoor)
+    }
+    
     func getSurroundingCells() -> [Coordinate] {
         var cells = [Coordinate]()
         for i in -1...1 {

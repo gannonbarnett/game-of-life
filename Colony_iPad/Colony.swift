@@ -11,9 +11,11 @@ import Foundation
 class Colony : CustomStringConvertible{
     private var aliveCells = Set<Coordinate>()
     public var cellsWide : Int
-    private var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
-    private var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
+    public var windowMIN = Coordinate(xCoor: 0, yCoor: 0)
+    public var windowMAX = Coordinate(xCoor: 10, yCoor: 10)
     
+    private let absoluteMIN = Coordinate(xCoor: 2, yCoor: 2)
+    private let absoluteMAX : Coordinate
     private var temp : String = "Blank"
     private var generation : Int
     private var wrapping : Bool = true
@@ -26,6 +28,8 @@ class Colony : CustomStringConvertible{
         self.cellsWide = cellsWide
         windowMIN = Coordinate(xCoor: 0, yCoor: 0)
         windowMAX = Coordinate(xCoor: cellsWide, yCoor: cellsWide)
+        //never go bigger than the cells wide.
+        absoluteMAX = windowMAX
         aliveCells = Set<Coordinate>()
     }
     
@@ -45,6 +49,18 @@ class Colony : CustomStringConvertible{
         windowMIN = Coordinate(xCoor: xMIN, yCoor: yMIN)
         windowMAX = Coordinate(xCoor: xMAX, yCoor: yMAX)
         print("Window range set to: x:(\(xMIN), \(xMAX)) y:(\(yMIN), \(yMAX))")
+    }
+    
+    func setWindow(origin: Coordinate, width: Int) {
+        //make sure it doesn't get set to larger than original colony size.
+        let halfWidth = Int(width / 2)
+        let calculatedMIN = Coordinate(xCoor: origin.xCoor - halfWidth, yCoor: origin.yCoor - halfWidth)
+        let calculatedMAX = Coordinate(xCoor: origin.xCoor + halfWidth, yCoor: origin.yCoor + halfWidth)
+        
+        if calculatedMIN.isWithinCoordinates(c1: absoluteMIN, c2: absoluteMAX) && calculatedMAX.isWithinCoordinates(c1: absoluteMIN, c2: absoluteMAX) {
+            windowMAX = calculatedMAX
+            windowMIN = calculatedMIN
+        }
     }
     
     func getWindow() {
