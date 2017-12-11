@@ -10,27 +10,34 @@ import UIKit
 
 class SettingsTableVC: UITableViewController {
 
-    var colonyRecieved : Colony? = nil
+    var colony : Colony {
+        return masterVC.detailViewController!.colony_DetailView!.colony!
+    }
     
+    @IBOutlet var wrappingEnabled_Switch: UISwitch!
+    @IBAction func wrappingEnabled_SwitchChanged(_ sender: Any) {
+        colony.setWrappingTo(wrappingEnabled_Switch.isOn)
+    }
+
     var masterVC : MasterViewController {
         return self.navigationController?.viewControllers[0] as! MasterViewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.colonyName.text = colonyRecieved?.name
-        self.gridEnabled_Switch.isOn = colonyRecieved!.gridEnabled
+        self.colonyName.text = colony.name
+        self.gridEnabled_Switch.isOn = colony.gridEnabled
     }
     
     @IBOutlet var colonyName: UITextField!
     @IBAction func colonyName_TextFieldChanged(_ sender: Any) {
-        colonyRecieved!.name = colonyName.text!
+        colony.name = colonyName.text!
         masterVC.updateColonyView()
     }
     
     @IBOutlet var gridEnabled_Switch: UISwitch!
     @IBAction func gridEnabled_SwitchChanged(_ sender: Any) {
-        colonyRecieved!.gridEnabled = gridEnabled_Switch.isOn
+        colony.gridEnabled = gridEnabled_Switch.isOn
         masterVC.updateColonyView()
     }
     
@@ -49,27 +56,27 @@ class SettingsTableVC: UITableViewController {
     }
     
     @IBAction func redCell_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.cellColor = colors.red.rawValue
+        colony.cellColor = colors.red.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func greenCell_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.cellColor = colors.green.rawValue
+        colony.cellColor = colors.green.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func blueCell_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.cellColor = colors.blue.rawValue
+        colony.cellColor = colors.blue.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func whiteCell_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.cellColor = colors.white.rawValue
+        colony.cellColor = colors.white.rawValue
         masterVC.updateColonyView()
     }
 
     @IBAction func blackCell_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.cellColor = colors.black.rawValue
+        colony.cellColor = colors.black.rawValue
         masterVC.updateColonyView()
     }
     
@@ -81,27 +88,27 @@ class SettingsTableVC: UITableViewController {
     @IBOutlet var blackColony_Button: UIButton!
     
     @IBAction func redColony_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.colonyColor = colors.red.rawValue
+        colony.colonyColor = colors.red.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func greenColony_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.colonyColor = colors.green.rawValue
+        colony.colonyColor = colors.green.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func blueColony_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.colonyColor = colors.blue.rawValue
+        colony.colonyColor = colors.blue.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func whiteColony_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.colonyColor = colors.white.rawValue
+        colony.colonyColor = colors.white.rawValue
         masterVC.updateColonyView()
     }
     
     @IBAction func blackColony_ButtonTouched(_ sender: Any) {
-        colonyRecieved?.colonyColor = colors.black.rawValue
+        colony.colonyColor = colors.black.rawValue
         masterVC.updateColonyView()
     }
 

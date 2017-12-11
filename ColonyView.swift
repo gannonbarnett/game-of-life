@@ -17,28 +17,29 @@ struct Line {
 
 class ColonyView: UIView {
     
-    public var colony : Colony = Colony(cellsWide: 10)
+    public var colony : Colony? = nil
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
     
     var gridEnabled : Bool {
-        return colony.gridEnabled
+        return colony!.gridEnabled
     }
 
-    let cellColor = UIColor.blue
+    var cellColor = UIColor.blue
     
     func updateColors() {
-        self.backgroundColor = UIColor(rgb: colony.colonyColor)
+        self.backgroundColor = UIColor(rgb: colony!.colonyColor)
+        self.cellColor = UIColor(rgb: colony!.cellColor)
         setNeedsDisplay()
     }
     
     func setGridVisible(_ status: Bool) {
-        colony.gridEnabled = status
+        colony!.gridEnabled = status
         setNeedsDisplay()
     }
     
     private var cellsInView : Int {
-        return colony.windowMAX.xCoor - colony.windowMIN.xCoor
+        return colony!.windowMAX.xCoor - colony!.windowMIN.xCoor
     }
     
     private var cellWidth : CGFloat {
@@ -57,9 +58,9 @@ class ColonyView: UIView {
     }
     
     override func draw(_ rect : CGRect) {
-        
+        print("\(colony!.name) : \(UIColor(rgb: colony!.colonyColor).description)")
         let w = frame.width
-        for cell in colony.getAliveCells() {
+        for cell in colony!.getAliveCells() {
                 colorCellAlive(cell)
         }
         
@@ -81,6 +82,9 @@ class ColonyView: UIView {
             let end = CGPoint(x: w - INSET, y: CGFloat(y) * cellWidth + INSET)
             drawLine(Line(begin: start, end: end), withColor: color)
         }
+        
+        updateColors()
+        
     }
     
     private func locationToCoor(_ location : CGPoint) -> Coordinate {
@@ -100,7 +104,7 @@ class ColonyView: UIView {
         
         
         let b = UIBezierPath(rect: cell)
-        UIColor(rgb: colony.cellColor).set()
+        cellColor.set()
         b.fill()
         b.stroke()
     }
@@ -113,8 +117,8 @@ class ColonyView: UIView {
         let location = touch.location(in: self)
         let coorTouched = locationToCoor(location)
 
-        dragStateAlive = colony.isCellAlive(coorTouched)
-        colony.isCellAlive(coorTouched) ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
+        dragStateAlive = colony!.isCellAlive(coorTouched)
+        colony!.isCellAlive(coorTouched) ? colony!.setCellDead(coorTouched) : colony!.setCellAlive(coorTouched)
         lastCoordinate = coorTouched
         setNeedsDisplay()
     }
@@ -125,7 +129,7 @@ class ColonyView: UIView {
         let coorTouched = locationToCoor(location)
         
         if lastCoordinate != coorTouched {
-            dragStateAlive ? colony.setCellDead(coorTouched) : colony.setCellAlive(coorTouched)
+            dragStateAlive ? colony!.setCellDead(coorTouched) : colony!.setCellAlive(coorTouched)
             setNeedsDisplay()
         }
         lastCoordinate = coorTouched

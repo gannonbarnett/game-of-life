@@ -10,7 +10,6 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-  //  @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak private var stackView: UIStackView!
     @IBOutlet var colony_DetailView: ColonyView!
     @IBOutlet var ControlsBar: UIView!
@@ -26,10 +25,9 @@ class DetailViewController: UIViewController {
         colony_DetailView = self.stackView.subviews[0] as! ColonyView
         ControlsBar = view.subviews[1]
         colony_DetailView.colony = colony
-        GenNumberLabel.text = "Generation \(colony_DetailView.colony.getGeneration())"
+        GenNumberLabel.text = "Generation \(colony_DetailView.colony!.getGeneration())"
         super.navigationItem.title = "\(colony.name)"
         updateSpeedLabel()
-        if colony_DetailView.colony.isWrapping() { WrappingSwitch.selectedSegmentIndex = 0 } else { WrappingSwitch.selectedSegmentIndex = 1 }
         self.configureView()
     }
     
@@ -37,11 +35,10 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         stopEvolve()
     }
- 
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
     
     //MARK:: CONTROLS BAR FUNCTIONS
@@ -77,11 +74,11 @@ class DetailViewController: UIViewController {
     @IBOutlet var WrappingSwitch: UISegmentedControl!
     
     @IBAction func WrappingSwitchChanged(_ sender: Any) {
-        colony_DetailView.colony.setWrappingTo(WrappingSwitch.selectedSegmentIndex == 0)
+        colony_DetailView.colony!.setWrappingTo(WrappingSwitch.selectedSegmentIndex == 0)
     }
 
     @IBAction func ClearButtonTouched(_ sender: Any) {
-        colony_DetailView.colony.resetColony()
+        colony_DetailView.colony!.resetColony()
         configureView()
     }
     
@@ -109,17 +106,17 @@ class DetailViewController: UIViewController {
     }
     
     func evolveColony() {
-        let c = colony_DetailView.colony
+        let c = colony_DetailView.colony!
         do {
             try c.evolve();configureView()
         }catch EvolveErrors.Colony_Dead {
             configureView()
-            GenNumberLabel.text = "Colony Dead at gen \(colony_DetailView.colony.getGeneration())"
+            GenNumberLabel.text = "Colony Dead at gen \(colony_DetailView.colony!.getGeneration())"
             GenNumberLabel.backgroundColor = UIColor.red
             return
         }catch EvolveErrors.Colony_Stagnant {
             configureView()
-            GenNumberLabel.text = "Colony Stagnant at gen \(colony_DetailView.colony.getGeneration())"
+            GenNumberLabel.text = "Colony Stagnant at gen \(colony_DetailView.colony!.getGeneration())"
             GenNumberLabel.backgroundColor = UIColor.red
             return
         }catch {
@@ -127,7 +124,7 @@ class DetailViewController: UIViewController {
         }
         
         GenNumberLabel.backgroundColor = UIColor.clear
-        GenNumberLabel.text = "Generation \(colony_DetailView.colony.getGeneration())"
+        GenNumberLabel.text = "Generation \(colony_DetailView.colony!.getGeneration())"
         guard let interval = sliderRawtoTime() else {
             //do nothing. rawtime is nil. (not continuos)
             return
