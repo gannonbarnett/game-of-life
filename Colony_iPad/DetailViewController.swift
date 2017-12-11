@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+  //  @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak private var stackView: UIStackView!
     @IBOutlet var colony_DetailView: ColonyView!
     @IBOutlet var ControlsBar: UIView!
@@ -31,7 +31,6 @@ class DetailViewController: UIViewController {
         updateSpeedLabel()
         if colony_DetailView.colony.isWrapping() { WrappingSwitch.selectedSegmentIndex = 0 } else { WrappingSwitch.selectedSegmentIndex = 1 }
         self.configureView()
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,12 +78,6 @@ class DetailViewController: UIViewController {
     
     @IBAction func WrappingSwitchChanged(_ sender: Any) {
         colony_DetailView.colony.setWrappingTo(WrappingSwitch.selectedSegmentIndex == 0)
-    }
-
-    @IBOutlet var GridSwitch: UISegmentedControl!
-    @IBAction func GridSwitchChanged(_ sender: Any) {
-        self.colony_DetailView.setGridVisible(GridSwitch.selectedSegmentIndex == 0)
-        print("grid status to \(GridSwitch.selectedSegmentIndex == 0)")
     }
 
     @IBAction func ClearButtonTouched(_ sender: Any) {

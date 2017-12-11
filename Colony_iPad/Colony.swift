@@ -23,6 +23,11 @@ class Colony : CustomStringConvertible{
     
     public var isDead: Bool { return aliveCells.isEmpty }
     
+    public var cellColor : Int = colors.blue.rawValue
+    public var colonyColor : Int = colors.white.rawValue
+    
+    var gridEnabled : Bool = false
+
     init(cellsWide: Int = 10) {
         generation = 0
         self.cellsWide = cellsWide
@@ -31,6 +36,14 @@ class Colony : CustomStringConvertible{
         //never go bigger than the cells wide.
         absoluteMAX = windowMAX
         aliveCells = Set<Coordinate>()
+    }
+    
+    func updateCellColor(toHex hex: Int) {
+        self.cellColor = hex
+    }
+    
+    func updateColonyColor(toHex hex : Int) {
+        self.colonyColor = hex
     }
     
     func getGeneration() -> Int {

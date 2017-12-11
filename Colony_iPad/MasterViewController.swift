@@ -63,7 +63,11 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
                 controller.colony = selectedColony
                 controller.colony_DetailView = detailViewController?.colony_DetailView
                 controller.colony_DetailView.colony = selectedColony
+                controller.colony_DetailView.backgroundColor = UIColor(rgb: selectedColony.colonyColor)
+                print(UIColor(rgb: selectedColony.colonyColor).description)
                 controller.configureView()
+                controller.colony_DetailView.setNeedsDisplay()
+                controller.colony_DetailView.updateColors()
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -79,11 +83,21 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         controller.colony = selectedColony
         controller.colony_DetailView = detailViewController?.colony_DetailView
         controller.colony_DetailView.colony = selectedColony
+        controller.title = selectedColony.name
         controller.configureView()
         controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
+        controller.colony_DetailView.updateColors()
     }
     // MARK: - Table View
+    
+    func updateColonyView() {
+        let navController = self.splitViewController!.viewControllers[1] as! UINavigationController
+        let controller =
+            (navController).topViewController as! DetailViewController
+        controller.colony_DetailView.updateColors()
+        controller.colony_DetailView.setNeedsDisplay()
+    }
     
     //Control Cell
     
@@ -110,7 +124,12 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let settingsVC = storyboard.instantiateViewController(withIdentifier: "settingsVC") as! SettingsTableVC
         
+        let colony = colonies[indexPath.row]
+        self.navigationController?.pushViewController(settingsVC, animated: true)
+        (self.navigationController?.topViewController as! SettingsTableVC).colonyRecieved = colony
     }
 }
 

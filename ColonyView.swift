@@ -21,28 +21,19 @@ class ColonyView: UIView {
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
     
-    var gridEnabled : Bool = false
-    
+    var gridEnabled : Bool {
+        return colony.gridEnabled
+    }
+
     let cellColor = UIColor.blue
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture(_:)))
-        addGestureRecognizer(pinchGestureRecognizer)
-    }
-    
-    func pinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
-        let gestureOrigin = gestureRecognizer.location(ofTouch: 0, in: self)
-        let coorOrigin = locationToCoor(gestureOrigin)
-        let scale = gestureRecognizer.scale
-        let oldWidth = colony.windowMAX.xCoor - colony.windowMIN.xCoor
-        let newWidth = Int(scale * CGFloat(oldWidth))
-        colony.setWindow(origin: coorOrigin, width: newWidth)
+    func updateColors() {
+        self.backgroundColor = UIColor(rgb: colony.colonyColor)
         setNeedsDisplay()
     }
     
     func setGridVisible(_ status: Bool) {
-        gridEnabled = status
+        colony.gridEnabled = status
         setNeedsDisplay()
     }
     
@@ -66,12 +57,15 @@ class ColonyView: UIView {
     }
     
     override func draw(_ rect : CGRect) {
+        
         let w = frame.width
         for cell in colony.getAliveCells() {
                 colorCellAlive(cell)
         }
         
         var color = self.backgroundColor!
+        self.backgroundColor = color
+        
         //make grid invisible if grid isn't enabled
         if gridEnabled {color = UIColor.black}
         
@@ -106,7 +100,7 @@ class ColonyView: UIView {
         
         
         let b = UIBezierPath(rect: cell)
-        cellColor.set()
+        UIColor(rgb: colony.cellColor).set()
         b.fill()
         b.stroke()
     }
