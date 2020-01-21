@@ -17,8 +17,8 @@ struct Line {
 
 
 class ColonyView: UIView {
-    
-    public var colony : Colony = Colony(10)
+
+    public var colony : Colony!
     public let INSET : CGFloat = 5.0
     private let line_WIDTH : CGFloat = 1.0
 
@@ -78,7 +78,7 @@ class ColonyView: UIView {
         let cell = CGRect(x: CGx, y: CGy, width: cellWidth, height: cellWidth)
         
         let b = UIBezierPath(rect: cell)
-        UIColor.red.set()
+        UIColor.green.set()
         b.fill()
         b.stroke()
     }

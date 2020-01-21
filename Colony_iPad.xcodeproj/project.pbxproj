@@ -15,11 +15,11 @@
 		164B65BF1FB0D8A700416B03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */; };
 		164B65CA1FB0D8A800416B03 /* Colony_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65C91FB0D8A800416B03 /* Colony_iPadTests.swift */; };
 		164B65D51FB0D8A800416B03 /* Colony_iPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65D41FB0D8A800416B03 /* Colony_iPadUITests.swift */; };
-		164B65E51FB0DC2E00416B03 /* cellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E41FB0DC2E00416B03 /* cellView.swift */; };
 		164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E61FB0DD3000416B03 /* coordinate.swift */; };
 		164B65E91FB0DD3900416B03 /* Colony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65E81FB0DD3900416B03 /* Colony.swift */; };
 		164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B65EC1FB3EF6B00416B03 /* ColonyView.swift */; };
 		16B3BF4A1FB7C71E00E6DC5D /* ControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3BF491FB7C71E00E6DC5D /* ControlCell.swift */; };
+		16B3BF4C1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3BF4B1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +54,11 @@
 		164B65D01FB0D8A800416B03 /* Colony_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Colony_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		164B65D41FB0D8A800416B03 /* Colony_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colony_iPadUITests.swift; sourceTree = "<group>"; };
 		164B65D61FB0D8A800416B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		164B65E41FB0DC2E00416B03 /* cellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellView.swift; sourceTree = "<group>"; };
 		164B65E61FB0DD3000416B03 /* coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coordinate.swift; sourceTree = "<group>"; };
 		164B65E81FB0DD3900416B03 /* Colony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colony.swift; sourceTree = "<group>"; };
 		164B65EC1FB3EF6B00416B03 /* ColonyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColonyView.swift; path = ../ColonyView.swift; sourceTree = "<group>"; };
 		16B3BF491FB7C71E00E6DC5D /* ControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlCell.swift; sourceTree = "<group>"; };
+		16B3BF4B1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColonyEvolveErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +111,13 @@
 			children = (
 				164B65B21FB0D8A700416B03 /* AppDelegate.swift */,
 				164B65B41FB0D8A700416B03 /* MasterViewController.swift */,
-				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
+				16B3BF4B1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift */,
 				164B65EC1FB3EF6B00416B03 /* ColonyView.swift */,
+				164B65B61FB0D8A700416B03 /* DetailViewController.swift */,
 				164B65B81FB0D8A700416B03 /* Main.storyboard */,
 				16B3BF491FB7C71E00E6DC5D /* ControlCell.swift */,
 				164B65E61FB0DD3000416B03 /* coordinate.swift */,
 				164B65E81FB0DD3900416B03 /* Colony.swift */,
-				164B65E41FB0DC2E00416B03 /* cellView.swift */,
 				164B65BB1FB0D8A700416B03 /* Assets.xcassets */,
 				164B65BD1FB0D8A700416B03 /* LaunchScreen.storyboard */,
 				164B65C01FB0D8A700416B03 /* Info.plist */,
@@ -280,12 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				164B65E51FB0DC2E00416B03 /* cellView.swift in Sources */,
 				164B65B71FB0D8A700416B03 /* DetailViewController.swift in Sources */,
 				164B65E71FB0DD3000416B03 /* coordinate.swift in Sources */,
 				164B65B51FB0D8A700416B03 /* MasterViewController.swift in Sources */,
 				164B65ED1FB3EF6B00416B03 /* ColonyView.swift in Sources */,
 				16B3BF4A1FB7C71E00E6DC5D /* ControlCell.swift in Sources */,
+				16B3BF4C1FBA9CE800E6DC5D /* ColonyEvolveErrors.swift in Sources */,
 				164B65E91FB0DD3900416B03 /* Colony.swift in Sources */,
 				164B65B31FB0D8A700416B03 /* AppDelegate.swift in Sources */,
 			);
